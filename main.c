@@ -3,12 +3,11 @@
 int	main(int ac, char **av)
 {
 	ft_check_arg(ac, av);
+	ft_map_parsing(av);
 	printf("waaaa\n");
-}
-
-void	ft_check_arg(int ac, char **av)
-{
-	(void)av;
-	if(ac != 2)
-		exit(0);
+	// while (1)
+	// {
+	// 	/* code */
+	// }
+	
 }

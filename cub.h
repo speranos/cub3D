@@ -4,8 +4,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <fcntl.h>
+#include "args_check/ft_args_check.h"
+#include "map_parsing/ft_map_parsing.h"
+#include "ft_get_next_line/get_next_line.h"
 
 
-void	ft_check_arg(int ac, char **av);
+int		ft_len(char *str);
+
 
 #endif
