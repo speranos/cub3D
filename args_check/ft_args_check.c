@@ -4,7 +4,7 @@ void	ft_check_arg(int ac, char **av)
 {
 	if(ac != 2)
 	{
-		printf("ERRO...More or not enough argument !!!\n");
+		printf("ERROR...More or not enough argument !!!\n");
 		exit(0);
 	}
 	ft_fd_check(av[1]);

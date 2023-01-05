@@ -1,6 +1,6 @@
 NAME = cub3D
 CFLAGS = -Wall -Wextra -Werror
-SRCS = args_check/*.c map_parsing/*.c *.c
+SRCS = args_check/*.c map_parsing/*.c ft_get_next_line/*.c *.c
 
 all : $(NAME)
 $(NAME): $(SRCS)
