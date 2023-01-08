@@ -54,12 +54,6 @@ void	ft_valide_path(char **map, t_map *cub, char c)
 	ft_add_txr_struc(tmp, cub, c);
 }
 
-void	ft_rgb_valide(char *map, t_map *cub)
-{
-	(void)map;
-	(void)cub;
-}
-
 int	ft_get_len_new_line(char *map)
 {
 	int	i;
@@ -102,8 +96,6 @@ void	ft_add_txr_struc(char *tmp, t_map  *cub, char c)
 
 void	ft_texture_exit(t_map *cub)
 {
-
-
 	if(cub->north_texture)
 	{
 		printf("NORTH\n");

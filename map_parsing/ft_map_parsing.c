@@ -32,15 +32,9 @@ void	ft_map_parsing(char **av)
 	t_map	cub;
 
 	full_map = ft_read(av);
-	ft_init_strc();
+	//ft_init_strc();
 	ft_texture_check(full_map, &cub);
 	ft_map_elem_check(full_map, &cub);
 	free(full_map);
 	printf("HOOOOOO\n");
-	while(1)
-	{
-		
-	}
 }
-
-void	ft_

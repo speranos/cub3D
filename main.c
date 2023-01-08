@@ -4,9 +4,9 @@ int	main(int ac, char **av)
 {
 	ft_check_arg(ac, av);
 	ft_map_parsing(av);
-	while (1)
-	{
-	}
+	// while (1)
+	// {
+	// }
 }
 
 // int	main(int ac, char **av)

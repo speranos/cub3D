@@ -22,5 +22,6 @@ void	ft_texture_exit(t_map *cub);
 void	ft_skip_space(char **map);
 int		ft_get_len_new_line(char *map);
 void	ft_add_txr_struc(char *tmp, t_map  *cub, char c);
+void	ft_num_rgb(char *map, t_map *cub);
 
 #endif
