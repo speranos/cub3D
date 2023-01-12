@@ -54,8 +54,13 @@ char	*ft_line(char *left)
 		return(NULL);
 	line = malloc(sizeof(char) * i + 1);
 	i = 0;
-	while(left[i] && left[i - 1] != '\n')
+	while(left[i])
 	{
+		if(i > 0)
+		{
+			if(left[i - 1] == '\n')
+				break;
+		}
 		line[i] = left[i];
 		i++;
 	}
@@ -94,7 +99,14 @@ int	ft_new_line_len(char *str)
 	i = 0;
 	if(!str)
 		return(0);
-	while (str[i] && str[i - 1] != '\n')
+	while (str[i])
+	{
+		if(i > 0)
+		{
+			if(str[i - 1] == '\n')
+				return(i);
+		}
 		i++;
+	}
 	return(i);
 }

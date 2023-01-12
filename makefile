@@ -1,5 +1,5 @@
 NAME = cub3D
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address
 SRCS = args_check/*.c map_parsing/*.c ft_get_next_line/*.c *.c
 
 all : $(NAME)

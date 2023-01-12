@@ -2,9 +2,11 @@
 
 void	ft_rgb_valide(char *map, t_map *cub)
 {
-	map++;
-	ft_num_rgb(map, cub);
-    ft_num_to_struct(map, cub);
+	(void)map;
+	(void)cub;
+	// map++;
+	// ft_num_rgb(map, cub);
+   // ft_num_to_struct(map, cub);
 }
 
 void	ft_num_rgb(char *map, t_map *cub)
@@ -33,3 +35,9 @@ void	ft_num_rgb(char *map, t_map *cub)
 	}
 }
 
+void	ft_rgb_error(t_map *cub, int kama)
+{
+	(void)cub;
+	(void)kama;
+	exit(0);
+}

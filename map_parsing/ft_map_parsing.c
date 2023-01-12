@@ -25,6 +25,14 @@ char	*ft_read(char **av)
 	}
 	return(ret);
 }
+void	ft_init_strc(t_map *cub)
+{
+	cub->north_texture = NULL;
+	cub->south_texture = NULL;
+	cub->west_texture = NULL;
+	cub->east_texture = NULL;
+	cub->floor_color = NULL;
+}
 
 void	ft_map_parsing(char **av)
 {
@@ -32,7 +40,7 @@ void	ft_map_parsing(char **av)
 	t_map	cub;
 
 	full_map = ft_read(av);
-	//ft_init_strc();
+	ft_init_strc(&cub);
 	ft_texture_check(full_map, &cub);
 	ft_map_elem_check(full_map, &cub);
 	free(full_map);

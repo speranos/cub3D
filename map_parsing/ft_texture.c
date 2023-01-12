@@ -97,24 +97,13 @@ void	ft_add_txr_struc(char *tmp, t_map  *cub, char c)
 void	ft_texture_exit(t_map *cub)
 {
 	if(cub->north_texture)
-	{
-		printf("NORTH\n");
 		free(cub->north_texture);
-	}
-	if(!cub->east_texture)
-	{
-		printf("EAST\n");
+	if(cub->east_texture)
 		free(cub->east_texture);
-	}
-	if(!cub->south_texture)
-	{
-		printf("SOUTH\n");
+	if(cub->south_texture)
 		free(cub->south_texture);
-	}
-	if(!cub->west_texture)
-	{
-		printf("WEST\n");
+	if(cub->west_texture)
 		free(cub->west_texture);
-	}
+	while(1);
 	exit(0);
 }
