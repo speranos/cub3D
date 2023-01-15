@@ -18,11 +18,10 @@ void	ft_texture_check(char *map, t_map *cub)
 		else if(c0 == 'E' && c1 == 'A')
 			ft_valide_path(&map, cub, 'E');
 		else if(c0 == 'F' || c0 == 'C')
-			ft_rgb_valide(&map, cub);
+			ft_rgb_valide(&map, cub, c0);
 		else
 			ft_texture_exit(cub);
 		c0 = map[0];
-		printf("c0 ====================== %c\n", c0);
 	}
 }
 
@@ -105,5 +104,9 @@ void	ft_texture_exit(t_map *cub)
 		free(cub->south_texture);
 	if(cub->west_texture)
 		free(cub->west_texture);
+	if(cub->ceilling_rgb)
+		free(cub->ceilling_rgb);
+	if(cub->floor_rgb)
+		free(cub->floor_rgb);
 	exit(0);
 }

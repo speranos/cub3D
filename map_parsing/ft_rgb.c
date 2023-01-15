@@ -1,12 +1,10 @@
 #include "../cub.h"
 
-void	ft_rgb_valide(char **map, t_map *cub)
+void	ft_rgb_valide(char **map, t_map *cub, char c)
 {
-	(void)map;
-	(void)cub;
-	(*map)++;
+	ft_skip_space(map);
 	ft_num_rgb(*map, cub);
-	ft_num_to_struct(cub, map);
+	ft_num_to_struct(cub, map, c);
 }
 
 void	ft_num_rgb(char *map, t_map *cub)
@@ -27,7 +25,7 @@ void	ft_num_rgb(char *map, t_map *cub)
 		else if(map[i] >= 48 && map[i] <= 57)
 			i++;
 		else
-			ft_rgb_error(cub, kama);
+			ft_rgb_error(cub);
 	}
 	ft_kama_check(kama, cub);
 }
@@ -35,33 +33,21 @@ void	ft_num_rgb(char *map, t_map *cub)
 void	ft_kama_check(int kama, t_map *cub)
 {
 	if(kama != 2)
-		ft_rgb_error(cub, kama);
+		ft_rgb_error(cub);
 }
 
-void	ft_rgb_error(t_map *cub, int kama)
+void	ft_rgb_error(t_map *cub)
 {
-	(void)kama;
 	printf("ERORR...RGB\n");
 	ft_texture_exit(cub);
 }
  
-void	ft_num_to_struct(t_map *cub, char **map)
+void	ft_num_to_struct(t_map *cub, char **map, char c)
 {
-	int	i;
-	
-	i = 0;
-	(void)cub;
-	while (*map[0] != '\n')
-	{
-		i = ft_rgb_atoi(map);
-		printf("i ================ %d\n", i);
-		if(*map[0] == '\n')
-			break;
-		(*map)++;
-	}
-	(*map)++;
-	
-
+	if(c == 'F')
+		ft_add_floor(cub, map);
+	else
+		ft_add_ceilling(cub, map);
 }
 
 int	ft_rgb_atoi(char **map)
@@ -73,8 +59,51 @@ int	ft_rgb_atoi(char **map)
 	{
 		res = res * 10 + (*map[0] - 48);
 		(*map)++;
-		// printf("res ================ %d\n", res);
-		// printf("map[0] =================== %c\n", *map[0]);
 	}
 	return(res);
+}
+
+void	ft_add_floor(t_map *cub, char **map)
+{
+	int	num;
+	int	i;
+
+	num = 0;
+	i = 0;
+	cub->floor_rgb = malloc(sizeof(int) * 3);
+
+	while (*map[0] != '\n')
+	{
+		num = ft_rgb_atoi(map);
+		if(num < 0 || num > 255)
+			ft_rgb_error(cub);
+		else
+			cub->floor_rgb[i++] = num;
+		if(*map[0] == '\n')
+			break;
+		(*map)++;
+	}
+	(*map)++;
+}
+
+void	ft_add_ceilling(t_map *cub, char **map)
+{
+	int	num;
+	int	i;
+
+	num = 0;
+	i = 0;
+	cub->ceilling_rgb = malloc(sizeof(int) * 3);
+	while (*map[0] != '\n')
+	{
+		num = ft_rgb_atoi(map);
+		if(num < 0 || num > 255)
+			ft_rgb_error(cub);
+		else
+			cub->ceilling_rgb[i++] = num;
+		if(*map[0] == '\n')
+			break;
+		(*map)++;
+	}
+	(*map)++;
 }

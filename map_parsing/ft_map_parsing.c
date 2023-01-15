@@ -31,7 +31,8 @@ void	ft_init_strc(t_map *cub)
 	cub->south_texture = NULL;
 	cub->west_texture = NULL;
 	cub->east_texture = NULL;
-	cub->floor_color = NULL;
+	cub->ceilling_rgb = NULL;
+	cub->floor_rgb = NULL;
 }
 
 void	ft_map_parsing(char **av)
@@ -43,6 +44,8 @@ void	ft_map_parsing(char **av)
 	ft_init_strc(&cub);
 	ft_texture_check(full_map, &cub);
 	ft_map_elem_check(full_map, &cub);
+	//map_parsing();
 	free(full_map);
+	// while(1);
 	printf("HOOOOOO\n");
 }

@@ -4,11 +4,13 @@
 typedef struct map
 {
 	char **map;
+	int  *floor_rgb;
+	int  *ceilling_rgb;
 	char *north_texture;
 	char *south_texture;
 	char *west_texture;
 	char *east_texture;
-	char *floor_color;
+	// char *floor_color;
 
 }	t_map;
 
@@ -17,15 +19,18 @@ void    ft_map_elem_check(char  *map, t_map *cub);
 void    ft_texture_check(char *map, t_map *cub);
 int		ft_alpha(char c, char **map);
 void	ft_valide_path(char **map, t_map *cub, char c);
-void	ft_rgb_valide(char **map, t_map *cub);
+void	ft_rgb_valide(char **map, t_map *cub, char c);
 void	ft_texture_exit(t_map *cub);
 void	ft_skip_space(char **map);
 int		ft_get_len_new_line(char *map);
 void	ft_add_txr_struc(char *tmp, t_map  *cub, char c);
 void	ft_num_rgb(char *map, t_map *cub);
-void	ft_rgb_error(t_map *cub, int kama);
+void	ft_rgb_error(t_map *cub);
 void	ft_kama_check(int kama, t_map *cub);
-void	ft_num_to_struct(t_map *cub, char **map);
+void	ft_num_to_struct(t_map *cub, char **map, char c);
 int		ft_rgb_atoi(char **map);
+void	ft_add_floor(t_map *cub, char **map);
+void	ft_add_ceilling(t_map *cub, char **map);
+
 
 #endif
