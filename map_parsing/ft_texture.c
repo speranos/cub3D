@@ -1,27 +1,27 @@
 #include "../cub.h"
 
-void	ft_texture_check(char *map, t_map *cub)
+void	ft_texture_check(char **map, t_map *cub)
 {
 	char	c0;
 	char	c1;
 
-	c0 = map[0];
-	while (ft_alpha(c0, &map) != 1)
+	c0 = *map[0];
+	while (ft_alpha(c0, map) != 1)
 	{
-		c1 = map[0];
+		c1 = *map[0];
 		if(c0 == 'N' && c1 == 'O')
-			ft_valide_path(&map, cub, 'N');
+			ft_valide_path(map, cub, 'N');
 		else if(c0 == 'S' && c1 == 'O')
-			ft_valide_path(&map, cub, 'S');
+			ft_valide_path(map, cub, 'S');
 		else if(c0 == 'W' && c1 == 'E')
-			ft_valide_path(&map, cub, 'W');
+			ft_valide_path(map, cub, 'W');
 		else if(c0 == 'E' && c1 == 'A')
-			ft_valide_path(&map, cub, 'E');
+			ft_valide_path(map, cub, 'E');
 		else if(c0 == 'F' || c0 == 'C')
-			ft_rgb_valide(&map, cub, c0);
+			ft_rgb_valide(map, cub, c0);
 		else
 			ft_texture_exit(cub);
-		c0 = map[0];
+		c0 = *map[0];
 	}
 }
 
