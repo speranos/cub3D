@@ -43,10 +43,8 @@ void	ft_map_parsing(char **av)
 	full_map = ft_read(av);
 	ft_init_strc(&cub);
 	ft_texture_check(&full_map, &cub);
-	printf("map[o] ======================= %c\n", full_map[0]);
 	ft_map_elem_check(&full_map, &cub);
-	// printf("map[o] ======================= %c\n", full_map[0]);
-	//free(full_map);
-	while(1);
+	printf("map[0] ================ %c\n", full_map[0]);
+	printf("west ===================== %s\n", cub.west_texture);
 	printf("HOOOOOO\n");
 }

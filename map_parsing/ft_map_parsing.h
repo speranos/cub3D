@@ -3,6 +3,9 @@
 
 typedef struct map
 {
+	char	c0;
+	char	c1;
+	int		tmp;
 	char **map;
 	int  *floor_rgb;
 	int  *ceilling_rgb;
@@ -10,7 +13,6 @@ typedef struct map
 	char *south_texture;
 	char *west_texture;
 	char *east_texture;
-	// char *floor_color;
 
 }	t_map;
 
@@ -18,7 +20,7 @@ void    ft_map_parsing(char **av);
 void    ft_map_elem_check(char  **map, t_map *cub);
 void    ft_texture_check(char **map, t_map *cub);
 int		ft_alpha(char c, char **map);
-void	ft_valide_path(char **map, t_map *cub, char c);
+void	ft_valide_path(char **map, t_map *cub, char c0, char c1);
 void	ft_rgb_valide(char **map, t_map *cub, char c);
 void	ft_texture_exit(t_map *cub);
 void	ft_skip_space(char **map);
@@ -31,6 +33,11 @@ void	ft_num_to_struct(t_map *cub, char **map, char c);
 int		ft_rgb_atoi(char **map);
 void	ft_add_floor(t_map *cub, char **map);
 void	ft_add_ceilling(t_map *cub, char **map);
-
+void    ft_map_error(t_map *cub, char c);
+void    ft_validate(t_map *cub);
+void	ft_undifiende_error(t_map *cub);
+void	ft_check_second_char(t_map *cub, char c0, char c1);
+int		ft_end_check(t_map *cub);
+void	ft_to_vald_texture(char **map, t_map *cub);
 
 #endif
