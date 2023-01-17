@@ -39,5 +39,15 @@ void	ft_undifiende_error(t_map *cub);
 void	ft_check_second_char(t_map *cub, char c0, char c1);
 int		ft_end_check(t_map *cub);
 void	ft_to_vald_texture(char **map, t_map *cub);
+void	ft_add_map_to_strc(t_map *cub, char **map);
+int		ft_get_gbl_len_of_line(char *map);
+int		ft_get_num_of_line(char *mp);
+void	ft_skip_new_line(t_map *cub, char **map);
+void	ft_wall_error(t_map *cub);
+void	ft_map_to_map(t_map *cub, char *map, int num_of_line, int len);
+int		ft_stars(t_map *cub, int a, int line, int len);
+void	ft_map_char_check(char *map, t_map *cub);
+void	ft_diff_element(t_map *cub, char c);
+void	ft_player_erro(t_map *cub);
 
 #endif
