@@ -5,6 +5,7 @@ typedef struct map
 {
 	char	c0;
 	char	c1;
+	char	player;
 	int		tmp;
 	char **map;
 	int  *floor_rgb;
@@ -49,5 +50,11 @@ int		ft_stars(t_map *cub, int a, int line, int len);
 void	ft_map_char_check(char *map, t_map *cub);
 void	ft_diff_element(t_map *cub, char c);
 void	ft_player_erro(t_map *cub);
+//void	ft_wall_check(t_map *cub); TO do;
+void	ft_zero_check(t_map *cub, int line, int i);
+void	ft_p_check(t_map *cub, int line, int i);
+void	ft_last_check(t_map *cub);
+void	ft_zero_error(t_map *cub);
+void	ft_p_error(t_map *cub);
 
 #endif

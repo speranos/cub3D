@@ -7,6 +7,8 @@ void    ft_map_elem_check(char  **map, t_map *cub)
 	ft_skip_new_line(cub, map);
 	ft_map_char_check(*map, cub);
 	ft_add_map_to_strc(cub, map);
+	//ft_check_wall;
+	ft_last_check(cub);
 }
 
 void    ft_validate(t_map *cub)
@@ -168,6 +170,7 @@ void	ft_map_char_check(char *map, t_map *cub)
 		else if(map[i] == 'S' || map[i] == 'W'
 			|| map[i] == 'N' || map[i] == 'E')
 		{
+			cub->player = map[i];
 			p++;
 			i++;
 		}
@@ -187,5 +190,69 @@ void	ft_diff_element(t_map *cub, char c)
 void	ft_player_erro(t_map *cub)
 {
 	printf("ERROR...You entered more or less than the required number of player\n");
+	ft_texture_exit(cub);
+}
+
+void	ft_last_check(t_map *cub)
+{
+	int		line;
+	int		i;
+	char	c;
+
+	line = 0;
+	i = 0;
+	while(cub->map[line])
+	{
+		while(cub->map[line][i])
+		{
+			c = cub->map[line][i];
+			if(c == '0')
+				ft_zero_check(cub, line, i);
+			else if(c == cub->player)
+				ft_p_check(cub, line, i);
+			i++;
+		}
+		i = 0;
+		line++;
+	}
+}
+
+void	ft_zero_check(t_map *cub, int line, int i)
+{
+	if(cub->map[line][i + 1] != '0' && cub->map[line][i + 1] != '1'
+		&& cub->map[line][i + 1] != cub->player)
+			ft_zero_error(cub);
+	else if(cub->map[line][i - 1] != '0' && cub->map[line][i - 1] != '1'
+		&& cub->map[line][i - 1] != cub->player)
+			ft_zero_error(cub);
+	else if(cub->map[line + 1][i] != '0' && cub->map[line + 1][i] != '1'
+		&& cub->map[line + 1][i] != cub->player)
+			ft_zero_error(cub);
+	else if(cub->map[line - 1][i] != '0' && cub->map[line - 1][i] != '1'
+		&& cub->map[line - 1][i] != cub->player)
+			ft_zero_error(cub);
+}
+
+void	ft_p_check(t_map *cub, int line, int i)
+{
+	if(cub->map[line][i + 1] != '0' && cub->map[line][i + 1] != '1')
+		ft_p_error(cub);
+	else if(cub->map[line][i - 1] != '0' && cub->map[line][i - 1] != '1')
+		ft_p_error(cub);
+	else if(cub->map[line + 1][i] != '0' && cub->map[line + 1][i] != '1')
+		ft_p_error(cub);
+	else if(cub->map[line - 1][i] != '0' && cub->map[line - 1][i] != '1')
+		ft_p_error(cub);
+}
+
+void	ft_zero_error(t_map *cub)
+{
+	printf("ERROR...'0' Should be surrounded by '0' or '1' or 'player'\n");
+	ft_texture_exit(cub);
+}
+
+void	ft_p_error(t_map *cub)
+{
+	printf("ERROR...Player should be surrounded by '0' or '1'\n");
 	ft_texture_exit(cub);
 }
