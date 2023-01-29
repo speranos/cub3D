@@ -60,5 +60,8 @@ char	ft_wall_zero(t_map *cub, int line);
 char	ft_wall_end(t_map *cub, int line);
 void	ft_first_wall(t_map *cub);
 void	ft_last_wall(t_map *cub, int line);
+void	ft_free_map(t_map *cub);
+void	ft_free_element(t_map *cub);
+void	ft_rm_rf(t_map *cub);
 
 #endif

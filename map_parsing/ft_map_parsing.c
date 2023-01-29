@@ -1,30 +1,32 @@
 #include "../cub.h"
-char	*ft_empty_map(char *read)
+
+void	ft_empty_map(char *read)
 {
 	free(read);
 	printf("ERROR...File empty !!!\n");
-	return(NULL);
+	exit(1);
 }
 
 char	*ft_read(char **av)
 {
-	int	fd;
+	int		fd;
 	char	*ret;
 	char	*read;
 
 	ret = NULL;
 	fd = open(av[1], O_RDONLY);
 	read = get_next_line(fd);
-	if(read == NULL)
-		return(ft_empty_map(read));
+	if (read == NULL)
+		ft_empty_map(read);
 	while (read != NULL)
 	{
 		ret = ft_joint(ret, read);
 		free(read);
 		read = get_next_line(fd);
 	}
-	return(ret);
+	return (ret);
 }
+
 void	ft_init_strc(t_map *cub)
 {
 	cub->north_texture = NULL;
@@ -38,12 +40,52 @@ void	ft_init_strc(t_map *cub)
 void	ft_map_parsing(char **av)
 {
 	char	*full_map;
+	char	*tmp;
 	t_map	cub;
 
 	full_map = ft_read(av);
+	tmp = full_map;
 	ft_init_strc(&cub);
+	
 	ft_texture_check(&full_map, &cub);
 	ft_map_elem_check(&full_map, &cub);
-	// while(1);
-	printf("HOOOOOO\n");
+
+	ft_rm_rf(&cub);
+	free(tmp);
+}
+
+void	ft_rm_rf(t_map *cub)
+{
+	ft_free_map(cub);
+	ft_free_element(cub);
+}
+
+void	ft_free_map(t_map *cub)
+{
+	int	line;
+	int	i;
+
+	line = 0;
+	i = 0;
+	while(cub->map[line])
+	{
+		free(cub->map[line++]);
+	}
+	free(cub->map);
+}
+
+void	ft_free_element(t_map *cub)
+{
+	if(cub->north_texture)
+		free(cub->north_texture);
+	if(cub->east_texture)
+		free(cub->east_texture);
+	if(cub->south_texture)
+		free(cub->south_texture);
+	if(cub->west_texture)
+		free(cub->west_texture);
+	if(cub->ceilling_rgb)
+		free(cub->ceilling_rgb);
+	if(cub->floor_rgb)
+		free(cub->floor_rgb);
 }

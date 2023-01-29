@@ -47,15 +47,16 @@ void	ft_valide_path(char **map, t_map *cub, char c0, char c1)
 	}
 	ft_skip_space(map);
 	i = ft_get_len_new_line(*map);
-	tmp = malloc(sizeof(char) * i + 1);
+	tmp = malloc(sizeof(char) * (i + 1));
 	i = 0;
-	while(*map[0] != '\n')
+	while(*map[0] && *map[0] != '\n')
 	{
 		tmp[i++] = *map[0];
 		(*map)++;
 	}
 	tmp[i] = '\0';
-	(*map)++;
+
+	//                      (*map)++;
 	ft_add_txr_struc(tmp, cub, c0);
 }
 
