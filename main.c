@@ -2,8 +2,12 @@
 
 int	main(int ac, char **av)
 {
+	t_map	cub;
+
 	ft_check_arg(ac, av);
-	ft_map_parsing(av);
+	ft_map_parsing(av, &cub);
+	//raycasting
+	ft_rm_rf(&cub);
 	while(1);
 	// {
 	// }

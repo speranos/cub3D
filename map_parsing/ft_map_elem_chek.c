@@ -37,6 +37,8 @@ void	ft_add_map_to_strc(t_map *cub, char **map)
 	i = 0;
 	len = ft_get_gbl_len_of_line(*map);
 	num_of_line = ft_get_num_of_line(*map);
+	cub->x = len;
+	cub->y = num_of_line;
 	cub->map = malloc(sizeof(char *) * (num_of_line + 1));
 	while (i < num_of_line)
 	{

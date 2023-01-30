@@ -7,6 +7,8 @@ typedef struct map
 	char	c1;
 	char	player;
 	int		tmp;
+	int		x;
+	int		y;
 	char **map;
 	int  *floor_rgb;
 	int  *ceilling_rgb;
@@ -17,7 +19,7 @@ typedef struct map
 
 }	t_map;
 
-void    ft_map_parsing(char **av);
+void    ft_map_parsing(char **av, t_map *cub);
 void    ft_map_elem_check(char  **map, t_map *cub);
 void    ft_texture_check(char **map, t_map *cub);
 int		ft_alpha(char c, char **map);
