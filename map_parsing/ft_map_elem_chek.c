@@ -8,6 +8,7 @@ void	ft_map_elem_check(char **map, t_map *cub)
 	ft_add_map_to_strc(cub, map);
 	ft_wall_check(cub);
 	ft_last_check(cub);
+	printf("WEHRWRTH\n");
 }
 
 void	ft_validate(t_map *cub)
@@ -316,7 +317,7 @@ void	ft_first_wall(t_map *cub)
 	i = 0;
 	while (cub->map[0][i] != '*')
 	{
-		if (cub->map[0][i] >= 32 || cub->map[0][i] == 49)
+		if (cub->map[0][i] <= 32 || cub->map[0][i] == 49)
 			i++;
 		else
 			ft_wall_error(cub);

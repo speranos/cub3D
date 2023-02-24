@@ -7,6 +7,7 @@ int	main(int ac, char **av)
 	ft_check_arg(ac, av);
 	ft_map_parsing(av, &cub);
 	//raycasting
+	printf("y = =>>>>>>>>>> %d\nx =>>>>>>>>> %d\n", cub.y, cub.x);
 	ft_rm_rf(&cub);
 	while(1);
 	// {

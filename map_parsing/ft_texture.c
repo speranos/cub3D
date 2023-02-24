@@ -57,6 +57,7 @@ void	ft_valide_path(char **map, t_map *cub, char c0, char c1)
 	tmp[i] = '\0';
 
 	//                      (*map)++;
+	printf("tmp ====== %s\n", tmp);
 	ft_add_txr_struc(tmp, cub, c0);
 }
 
@@ -88,7 +89,7 @@ void	ft_add_txr_struc(char *tmp, t_map  *cub, char c)
 	int	fd;
 
 	fd = open(tmp, O_RDONLY);
-	if(fd == -1)
+	if(fd == -1 || ft_len(tmp) < 3)
 	{
 		printf("ERROR...'%s' Invalid texture path !!!\n", tmp);
 		ft_texture_exit(cub);
