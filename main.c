@@ -1,33 +1,25 @@
-#include "cub.h"
 
-int	main(int ac, char **av)
+#include "parsing/cub.h"
+
+int main(int ac, char **av)
 {
-	t_map	cub;
+	t_map *game;
 
+	game = malloc(sizeof(t_map));
+	game->play = malloc(sizeof(t_player));
+	game->imge = malloc(sizeof(t_img));
+	game->cast = malloc(sizeof(t_cast));
 	ft_check_arg(ac, av);
-	ft_map_parsing(av, &cub);
-	//raycasting
-	printf("y = =>>>>>>>>>> %d\nx =>>>>>>>>> %d\n", cub.y, cub.x);
-	ft_rm_rf(&cub);
-	while(1);
-	// {
-	// }
-}
+	ft_map_parsing(av, game);
+	//printf("%c\n", game->player);
+	game->mlx = mlx_init();
+	game->win = mlx_new_window(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "CUB3D ALI FANBOY");
+	struct_initialisation(game);
+	ft_draw(game);
+	mlx_hook(game->win, 02, (1L << 0), key_pressed, game->play);
+	mlx_hook(game->win, 03, (1L << 1), key_release, game->play);
+	mlx_loop_hook(game->mlx, ft_draw, game);
+	mlx_loop(game->mlx);
 
-// int	main(int ac, char **av)
-// {
-// 	int	fd;
-// 	char	*line;
-// 	(void)ac;
-// 	fd = open(av[1], O_RDONLY);
-// 	line = get_next_line(fd);
-// 	while(line != NULL)
-// 	{
-// 		printf("line ============ %s\n", line);
-// 		free(line);
-// 		line = get_next_line(fd);
-// 	}
-// 	while (1)
-// 	{
-// 	}
-// }
+	ft_rm_rf(game);
+}

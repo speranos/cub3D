@@ -1,14 +1,17 @@
 NAME = cub3D
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address
-SRCS = args_check/*.c map_parsing/*.c ft_get_next_line/*.c *.c
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
+SRCS = parsing/args_check/*.c parsing/map_parsing/*.c parsing/ft_get_next_line/*.c *.c raycasting/*.c
 
 all : $(NAME)
-$(NAME): $(SRCS)
-	@cc $(SRCS) $(CFLAGS) -o $(NAME)
-	@echo YOU ARE READY TO GO ...!
+
+$(NAME) :
+	@$(CC)  $(CFLAGS) $(SRCS) -lmlx -framework OpenGL -framework AppKit -o $(NAME)                                                                                                                                   
+	@echo YOUR ARE READY TO GO !!!
 clean :
-	@rm -rf $(NAME)
-	@echo CLEAN ...!
-fclean : clean
-	@echo RESET ...!
+	@rm -rf $(OBJS)
+	@echo CLEAN !!!
+fclean :
+	@rm -rf $(NAME) $(OBJS)
+	@echo RESET ...
 re : fclean all

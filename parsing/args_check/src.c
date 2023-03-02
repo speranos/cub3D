@@ -1,4 +1,4 @@
-#include "cub.h"
+#include "../cub.h"
 
 int	ft_len(char *str)
 {
