@@ -1,5 +1,4 @@
-
-#include "parsing/cub.h"
+#include "cub3d.h"
 
 int main(int ac, char **av)
 {
@@ -10,8 +9,7 @@ int main(int ac, char **av)
 	game->imge = malloc(sizeof(t_img));
 	game->cast = malloc(sizeof(t_cast));
 	ft_check_arg(ac, av);
-	ft_map_parsing(av, game);
-	//printf("%c\n", game->player);
+	cub3d(av, game);
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "CUB3D ALI FANBOY");
 	struct_initialisation(game);
@@ -20,6 +18,5 @@ int main(int ac, char **av)
 	mlx_hook(game->win, 03, (1L << 1), key_release, game->play);
 	mlx_loop_hook(game->mlx, ft_draw, game);
 	mlx_loop(game->mlx);
-
 	ft_rm_rf(game);
 }

@@ -1,4 +1,4 @@
-#include "../parsing/cub.h"
+#include "../cub3d.h"
 
 int ft_strlen(char *s)
 {
@@ -36,8 +36,8 @@ void get_pos(t_map *game)
 		{
 			if (game->map[i][j] == 'N' || game->map[i][j] == 'W' || game->map[i][j] == 'S' || game->map[i][j] == 'E')
 			{
-				game->play->position_y = i;
-				game->play->position_x = j;
+				game->play->position_y_map = i;
+				game->play->position_x_map = j;
 			}
 			j++;
 		}

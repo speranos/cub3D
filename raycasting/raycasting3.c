@@ -1,4 +1,4 @@
-#include "../parsing/cub.h"
+#include "../cub3d.h"
 
 void draw_circle(t_map *game)
 {

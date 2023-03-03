@@ -1,6 +1,6 @@
-#include "../cub.h"
+#include "../cub_parsing.h"
 
-void	ft_map_elem_check(char **map, t_map *cub)
+void ft_map_elem_check(char **map, t_map *cub)
 {
 	ft_validate(cub);
 	ft_skip_new_line(cub, map);
@@ -10,16 +10,15 @@ void	ft_map_elem_check(char **map, t_map *cub)
 	ft_last_check(cub);
 }
 
-void	ft_validate(t_map *cub)
+void ft_validate(t_map *cub)
 {
 	if (!cub->ceilling_rgb || !cub->floor_rgb)
 		ft_map_error(cub, 'c');
-	if (!cub->east_texture || !cub->north_texture
-		|| !cub->south_texture || !cub->west_texture)
+	if (!cub->east_texture || !cub->north_texture || !cub->south_texture || !cub->west_texture)
 		ft_map_error(cub, 't');
 }
 
-void	ft_map_error(t_map *cub, char c)
+void ft_map_error(t_map *cub, char c)
 {
 	if (c == 'c')
 		printf("ERROR...Missing color\n");
@@ -28,11 +27,11 @@ void	ft_map_error(t_map *cub, char c)
 	ft_texture_exit(cub);
 }
 
-void	ft_add_map_to_strc(t_map *cub, char **map)
+void ft_add_map_to_strc(t_map *cub, char **map)
 {
-	int	len;
-	int	num_of_line;
-	int	i;
+	int len;
+	int num_of_line;
+	int i;
 
 	i = 0;
 	len = ft_get_gbl_len_of_line(*map);
@@ -51,11 +50,11 @@ void	ft_add_map_to_strc(t_map *cub, char **map)
 		printf("%s\n", cub->map[i++]);
 }
 
-int	ft_get_gbl_len_of_line(char *map)
+int ft_get_gbl_len_of_line(char *map)
 {
-	int	i;
-	int	len;
-	int	tmp;
+	int i;
+	int len;
+	int tmp;
 
 	i = 0;
 	len = 0;
@@ -64,22 +63,22 @@ int	ft_get_gbl_len_of_line(char *map)
 	{
 		if (map[i] == '\n')
 		{
-			if(tmp < len)
+			if (tmp < len)
 				tmp = len;
 			len = 0;
 		}
 		i++;
 		len++;
-		if(map[i] == '\0' && tmp < len)
-				tmp = len;
+		if (map[i] == '\0' && tmp < len)
+			tmp = len;
 	}
 	return (tmp);
 }
 
-int	ft_get_num_of_line(char *map)
+int ft_get_num_of_line(char *map)
 {
-	int	i;
-	int	len;
+	int i;
+	int len;
 
 	i = 0;
 	len = 1;
@@ -92,15 +91,15 @@ int	ft_get_num_of_line(char *map)
 	return (len);
 }
 
-void	ft_skip_new_line(t_map *cub, char **map)
+void ft_skip_new_line(t_map *cub, char **map)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while ((*map)[i] && (*map)[i] != '\n')
 	{
 		if ((*map)[i] >= 48 && (*map)[i] <= 57)
-			break ;
+			break;
 		else if ((*map)[i] > 32)
 			ft_wall_error(cub);
 		i++;
@@ -116,20 +115,20 @@ void	ft_skip_new_line(t_map *cub, char **map)
 	}
 }
 
-void	ft_wall_error(t_map *cub)
+void ft_wall_error(t_map *cub)
 {
-	//to add :
-	// if (cub->map)
-	// 	ft_free_map(cub);
+	// to add :
+	//  if (cub->map)
+	//  	ft_free_map(cub);
 	printf("ERROR...Map must be surrounded by 1\n");
 	ft_texture_exit(cub);
 }
 
-void	ft_map_to_map(t_map *cub, char *map, int num_of_line, int len)
+void ft_map_to_map(t_map *cub, char *map, int num_of_line, int len)
 {
-	int	i;
-	int	a;
-	int	line;
+	int i;
+	int a;
+	int line;
 
 	i = 0;
 	a = 0;
@@ -147,7 +146,7 @@ void	ft_map_to_map(t_map *cub, char *map, int num_of_line, int len)
 	cub->map[line] = 0;
 }
 
-int	ft_stars(t_map *cub, int a, int line, int len)
+int ft_stars(t_map *cub, int a, int line, int len)
 {
 	while (a < len)
 	{
@@ -157,10 +156,10 @@ int	ft_stars(t_map *cub, int a, int line, int len)
 	return (a);
 }
 
-void	ft_map_char_check(char *map, t_map *cub)
+void ft_map_char_check(char *map, t_map *cub)
 {
-	int	i;
-	int	p;
+	int i;
+	int p;
 
 	i = 0;
 	p = 0;
@@ -170,8 +169,7 @@ void	ft_map_char_check(char *map, t_map *cub)
 			i++;
 		else if (map[i] == '1' || map[i] == '0')
 			i++;
-		else if (map[i] == 'S' || map[i] == 'W'
-			|| map[i] == 'N' || map[i] == 'E')
+		else if (map[i] == 'S' || map[i] == 'W' || map[i] == 'N' || map[i] == 'E')
 		{
 			cub->player = map[i];
 			p++;
@@ -184,23 +182,23 @@ void	ft_map_char_check(char *map, t_map *cub)
 		ft_player_erro(cub);
 }
 
-void	ft_diff_element(t_map *cub, char c)
+void ft_diff_element(t_map *cub, char c)
 {
 	printf("ERROR...'%c' Unsupported character in the map\n", c);
 	ft_texture_exit(cub);
 }
 
-void	ft_player_erro(t_map *cub)
+void ft_player_erro(t_map *cub)
 {
 	printf("ERROR...You entered more or less than the required number of player\n");
 	ft_texture_exit(cub);
 }
 
-void	ft_last_check(t_map *cub)
+void ft_last_check(t_map *cub)
 {
-	int		line;
-	int		i;
-	char	c;
+	int line;
+	int i;
+	char c;
 
 	line = 0;
 	i = 0;
@@ -220,23 +218,19 @@ void	ft_last_check(t_map *cub)
 	}
 }
 
-void	ft_zero_check(t_map *cub, int line, int i)
+void ft_zero_check(t_map *cub, int line, int i)
 {
-	if (cub->map[line][i + 1] != '0' && cub->map[line][i + 1] != '1'
-		&& cub->map[line][i + 1] != cub->player)
-			ft_zero_error(cub);
-	else if (cub->map[line][i - 1] != '0' && cub->map[line][i - 1] != '1'
-		&& cub->map[line][i - 1] != cub->player)
-			ft_zero_error(cub);
-	else if (cub->map[line + 1][i] != '0' && cub->map[line + 1][i] != '1'
-		&& cub->map[line + 1][i] != cub->player)
-			ft_zero_error(cub);
-	else if (cub->map[line - 1][i] != '0' && cub->map[line - 1][i] != '1'
-		&& cub->map[line - 1][i] != cub->player)
-			ft_zero_error(cub);
+	if (cub->map[line][i + 1] != '0' && cub->map[line][i + 1] != '1' && cub->map[line][i + 1] != cub->player)
+		ft_zero_error(cub);
+	else if (cub->map[line][i - 1] != '0' && cub->map[line][i - 1] != '1' && cub->map[line][i - 1] != cub->player)
+		ft_zero_error(cub);
+	else if (cub->map[line + 1][i] != '0' && cub->map[line + 1][i] != '1' && cub->map[line + 1][i] != cub->player)
+		ft_zero_error(cub);
+	else if (cub->map[line - 1][i] != '0' && cub->map[line - 1][i] != '1' && cub->map[line - 1][i] != cub->player)
+		ft_zero_error(cub);
 }
 
-void	ft_p_check(t_map *cub, int line, int i)
+void ft_p_check(t_map *cub, int line, int i)
 {
 	if (cub->map[line][i + 1] != '0' && cub->map[line][i + 1] != '1')
 		ft_p_error(cub);
@@ -248,24 +242,24 @@ void	ft_p_check(t_map *cub, int line, int i)
 		ft_p_error(cub);
 }
 
-void	ft_zero_error(t_map *cub)
+void ft_zero_error(t_map *cub)
 {
 	printf("ERROR...'0' Should be surrounded by '0' or '1' or 'player'\n");
 	ft_texture_exit(cub);
 }
 
-void	ft_p_error(t_map *cub)
+void ft_p_error(t_map *cub)
 {
 	printf("ERROR...Player should be surrounded by '0' or '1'\n");
 	ft_texture_exit(cub);
 }
 
-void	ft_wall_check(t_map *cub)
+void ft_wall_check(t_map *cub)
 {
-	int	i;
-	char	start;
-	int	line;
-	char	end;
+	int i;
+	char start;
+	int line;
+	char end;
 
 	i = 0;
 	line = 1;
@@ -282,10 +276,10 @@ void	ft_wall_check(t_map *cub)
 	ft_last_wall(cub, line);
 }
 
-char	ft_wall_zero(t_map *cub, int line)
+char ft_wall_zero(t_map *cub, int line)
 {
-	int		i;
-	char	c;
+	int i;
+	char c;
 
 	i = 0;
 
@@ -295,10 +289,10 @@ char	ft_wall_zero(t_map *cub, int line)
 	return (c);
 }
 
-char	ft_wall_end(t_map *cub, int line)
+char ft_wall_end(t_map *cub, int line)
 {
-	int		i;
-	char	c;
+	int i;
+	char c;
 
 	i = 0;
 	while (cub->map[line][i] && cub->map[line][i] != '*')
@@ -309,9 +303,9 @@ char	ft_wall_end(t_map *cub, int line)
 	return (c);
 }
 
-void	ft_first_wall(t_map *cub)
+void ft_first_wall(t_map *cub)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (cub->map[0][i] != '*')
@@ -323,9 +317,9 @@ void	ft_first_wall(t_map *cub)
 	}
 }
 
-void	ft_last_wall(t_map *cub, int line)
+void ft_last_wall(t_map *cub, int line)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (cub->map[line][i] != '*')

@@ -1,12 +1,12 @@
-#include "../cub.h"
+#include "../cub_parsing.h"
 #include <fcntl.h>
 
-char	*get_next_line(int fd)
+char *get_next_line(int fd)
 {
-	static char	*left;
-	int			ret;
-	char		*buf;
-	int			buffer_size;
+	static char *left;
+	int ret;
+	char *buf;
+	int buffer_size;
 
 	buffer_size = 13;
 	buf = malloc(sizeof(char) * buffer_size + 1);
@@ -21,7 +21,7 @@ char	*get_next_line(int fd)
 	free(buf);
 	buf = ft_line(left);
 	left = ft_update_left(left);
-	return(buf);
+	return (buf);
 }
 
 // int main(int ac, char **av)
@@ -37,5 +37,5 @@ char	*get_next_line(int fd)
 // 		printf("str =============== %s\n", str);
 // 		str = get_next_line(fd);
 // 	}
-	
+
 // }

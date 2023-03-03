@@ -1,35 +1,34 @@
-#include "../cub.h"
+#include "../cub_parsing.h"
 
-int	ft_searche(char	*buf)
+int ft_searche(char *buf)
 {
-	int	i;
+	int i;
 
 	i = 0;
-	if(!buf)
-		return(1);
-	while(buf[i])
+	if (!buf)
+		return (1);
+	while (buf[i])
 	{
-		if(buf[i] == '\n')
-			return(1);
+		if (buf[i] == '\n')
+			return (1);
 		i++;
 	}
-	return(0);
+	return (0);
 }
 
-char	*ft_joint(char *left, char *buf)
+char *ft_joint(char *left, char *buf)
 {
-	char	*ret;
-	int		i;
-	int		a;
+	char *ret;
+	int i;
+	int a;
 
-
-	if(!buf)
-		return(NULL);
+	if (!buf)
+		return (NULL);
 	a = ft_len(left) + ft_len(buf);
 	ret = malloc(sizeof(char) * (a + 1));
 	i = 0;
 	a = 0;
-	if(left)
+	if (left)
 	{
 		while (left[a])
 			ret[i++] = left[a++];
@@ -39,48 +38,48 @@ char	*ft_joint(char *left, char *buf)
 		ret[i++] = buf[a++];
 	ret[i] = '\0';
 	free(left);
-	return(ret);
+	return (ret);
 }
 
-char	*ft_line(char *left)
+char *ft_line(char *left)
 {
-	int		i;
-	char	*line;
+	int i;
+	char *line;
 
-	if(!left)
-		return(NULL);
+	if (!left)
+		return (NULL);
 	i = ft_new_line_len(left);
-	if(i <= 0)
-		return(NULL);
+	if (i <= 0)
+		return (NULL);
 	line = malloc(sizeof(char) * i + 1);
 	i = 0;
-	while(left[i])
+	while (left[i])
 	{
-		if(i > 0)
+		if (i > 0)
 		{
-			if(left[i - 1] == '\n')
+			if (left[i - 1] == '\n')
 				break;
 		}
 		line[i] = left[i];
 		i++;
 	}
 	line[i] = '\0';
-	return(line);
+	return (line);
 }
 
-char	*ft_update_left(char *left)
+char *ft_update_left(char *left)
 {
-	char	*update;
-	int		i;
-	int		a;
+	char *update;
+	int i;
+	int a;
 
-	if(!left)
-		return(NULL);
+	if (!left)
+		return (NULL);
 	i = (ft_len(left) - ft_new_line_len(left));
-	if(i <= 0)
+	if (i <= 0)
 	{
 		free(left);
-		return(NULL);
+		return (NULL);
 	}
 	update = malloc(sizeof(char) * i + 1);
 	i = ft_new_line_len(left);
@@ -89,24 +88,24 @@ char	*ft_update_left(char *left)
 		update[a++] = left[i++];
 	update[a] = '\0';
 	free(left);
-	return(update);
+	return (update);
 }
 
-int	ft_new_line_len(char *str)
+int ft_new_line_len(char *str)
 {
-	int	i;
+	int i;
 
 	i = 0;
-	if(!str)
-		return(0);
+	if (!str)
+		return (0);
 	while (str[i])
 	{
-		if(i > 0)
+		if (i > 0)
 		{
-			if(str[i - 1] == '\n')
-				return(i);
+			if (str[i - 1] == '\n')
+				return (i);
 		}
 		i++;
 	}
-	return(i);
+	return (i);
 }

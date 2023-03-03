@@ -1,4 +1,4 @@
-#include "../parsing/cub.h"
+#include "../cub3d.h"
 
 void print_rect(t_map *game, int x, int y, int z, unsigned int color)
 {
@@ -55,8 +55,10 @@ void player_init(t_map *game)
 	game->play->turn_direction = 0;
 	game->play->walk_direction = 0;
 	game->play->rotation_speed = (M_PI / 180) * 4;
-	game->play->position_x = game->play->position_x * SCALE + 16;
-	game->play->position_y = game->play->position_y * SCALE + 16;
+	game->play->position_x = game->play->position_x_map * SCALE + 16;
+	game->play->position_y = game->play->position_y_map * SCALE + 16;
+	game->play->position_x_mini_carte = game->play->position_x_map * SCALE2 + 4;
+	game->play->position_y_mini_carte = game->play->position_y_map * SCALE2 + 4;
 }
 
 void struct_initialisation(t_map *game)
@@ -149,4 +151,3 @@ void update_player(t_player *player, t_map *game)
 	}
 	player->angle += player->turn_direction * player->rotation_speed;
 }
-

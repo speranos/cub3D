@@ -3,12 +3,14 @@
 #define WINDOW_WIDTH 1080
 #define WINDOW_HEIGHT 720
 #define SCALE 32
+#define SCALE2 8
 
 #include <mlx.h>
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "parsing/cub_parsing.h"
 
 typedef struct s_img
 {
@@ -23,10 +25,10 @@ typedef struct s_img
 
 typedef struct s_cast
 {
-	int x_wall;
-	int y_wall;
+	double x_wall;
+	double y_wall;
 	int num_rays;
-	int dist;
+	double dist;
 	double *dist_wall;
 	double *dist_wall2;
 } t_cast;
@@ -40,8 +42,12 @@ typedef struct player_s
 	double move_speed;
 	double turn_speed;
 	double rotation_speed;
+	double position_x_map;
+	double position_y_map;
 	double position_x;
 	double position_y;
+	double position_x_mini_carte;
+	double position_y_mini_carte;
 	int AD;
 } t_player;
 
@@ -72,7 +78,7 @@ typedef struct map
 
 } t_map;
 
-void ft_map_parsing(char **av, t_map *game);
+void cub3d(char **av, t_map *game);
 void ft_map_elem_check(char **map, t_map *cub);
 void ft_texture_check(char **map, t_map *cub);
 int ft_alpha(char c, char **map);
@@ -141,5 +147,7 @@ void get_pos(t_map *game);
 void ft_img_init(t_img *img);
 void ft_image(t_map *game);
 int ft_strlen(char *s);
-
-
+void put_pixels2(t_map *game);
+void ft_draw_player2(t_map *game);
+void draw_circle2(t_map *game);
+void update_player2(t_player *player, t_map *game);
