@@ -12,17 +12,16 @@ void ft_draw_player(t_map *game)
 	double i;
 	int j;
 	int k;
-	// int distance;
-	double angle = game->play->angle - (30 * M_PI / 180);
-	double max_ang = game->play->angle + (30 * M_PI / 180);
 
-	game->cast->dist_wall = malloc(sizeof(double) * 1080);
-	game->cast->dist_wall2 = malloc(sizeof(double) * 1080);
-
-	float projection_distance = 0.7f * 32 / tan(0.523599);
 	i = 0;
 	j = 0;
 	k = 0;
+
+	double angle = game->play->angle - (30 * M_PI / 180);
+	double max_ang = game->play->angle + (30 * M_PI / 180);
+	game->cast->dist_wall = malloc(sizeof(double) * 1080);
+	game->cast->dist_wall2 = malloc(sizeof(double) * 1080);
+	float projection_distance = 0.7f * 32 / tan(0.523599);
 	while (angle < max_ang)
 	{
 		i = 0;
@@ -30,22 +29,18 @@ void ft_draw_player(t_map *game)
 		{
 			if (check_wall(game, (int)((game->play->position_x + i * cos(angle)) / SCALE), (int)((game->play->position_y + i * sin(angle)) / SCALE)))
 				break;
-			// my_mlx_pixel_put(game, (int)(game->play->position_x  + i * cos(angle)), (int)(game->play->position_y +  i * sin(angle)) , 0x00ff0000);
 			i += 0.05;
 		}
 		game->cast->x_wall = (game->play->position_x + i * cos(angle));
 		game->cast->y_wall = (game->play->position_y + i * sin(angle));
 		game->cast->dist = sqrt((game->cast->x_wall - game->play->position_x) * (game->cast->x_wall - game->play->position_x) +
 								(game->cast->y_wall - game->play->position_y) * (game->cast->y_wall - game->play->position_y));
-		// printf("%d\n", game->cast->dist);
 		game->cast->dist_wall[j] = game->cast->dist * cos(game->play->angle - angle);
 		game->cast->dist_wall2[k] = ((WINDOW_HEIGHT * projection_distance / game->cast->dist_wall[j]));
 		angle += 0.00097;
 		j++;
 		k++;
 	}
-	// draw_circle(game);
-	//  printf("[ x = %d ] [ y = %d ]\n",game->cast->x_wall, game->cast->y_wall);
 }
 
 void draw_walls(t_map *game)
@@ -95,17 +90,17 @@ void floor_ceeling(t_map *cube)
 		i++;
 	}
 }
+
 int ft_draw(t_map *game)
 {
 	ft_image(game);
-	// put_pixels(game);
 	floor_ceeling(game);
 	ft_draw_player(game);
 	draw_walls(game);
-	// put_pixels2(game);
-	// ft_draw_player2(game);
+	put_pixels(game);
 	update_player(game->play, game);
-	// update_player2(game->play, game);
+	ft_draw_player_mini_map(game);
+	update_player_mini_map(game->play, game);
 	mlx_put_image_to_window(game->mlx, game->win, game->imge->img, 0, 0);
 	mlx_destroy_image(game->mlx, game->imge->img);
 	return (0);
