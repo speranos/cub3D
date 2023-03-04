@@ -34,7 +34,7 @@ void ft_draw_player(t_map *game)
 		game->cast->x_wall = (game->play->position_x + i * cos(angle));
 		game->cast->y_wall = (game->play->position_y + i * sin(angle));
 		game->cast->dist = sqrt((game->cast->x_wall - game->play->position_x) * (game->cast->x_wall - game->play->position_x) +
-								(game->cast->y_wall - game->play->position_y) * (game->cast->y_wall - game->play->position_y));
+								(game->cast->y_wall - game->play->position_y) * (game->cast->y_wall - game->play->position_y)) + 10;
 		game->cast->dist_wall[j] = game->cast->dist * cos(game->play->angle - angle);
 		game->cast->dist_wall2[k] = ((WINDOW_HEIGHT * projection_distance / game->cast->dist_wall[j]));
 		angle += 0.00097;
