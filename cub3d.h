@@ -151,3 +151,6 @@ void put_pixels_mini_map(t_map *game);
 void ft_draw_player_mini_map(t_map *game);
 void draw_circle_mini_map(t_map *game);
 void update_player_mini_map(t_player *player, t_map *game);
+int	mouse_click(int key, int x, int y, t_map *game);
+int	mouse_release(int key, int x, int y, t_map *game);
+int	mouse_move(int x, int y, t_map *game);
