@@ -1,5 +1,20 @@
 #include "../cub3d.h"
 
+void	texture_init(t_map *game)
+{
+	game->create_pixel[0].image = mlx_xpm_file_to_image(game->mlx, game->west_texture, &game->create_pixel[0].width, &game->create_pixel[0].height);
+	game->create_pixel[0].image_data = (unsigned int *)mlx_get_data_addr(game->create_pixel[0].image, &game->create_pixel[0].bits_per_pixel, &game->create_pixel[0].size_line, &game->create_pixel[0].endian);
+
+	game->create_pixel[1].image = mlx_xpm_file_to_image(game->mlx, game->north_texture, &game->create_pixel[1].width, &game->create_pixel[1].height);
+	game->create_pixel[1].image_data = (unsigned int *)mlx_get_data_addr(game->create_pixel[1].image, &game->create_pixel[1].bits_per_pixel, &game->create_pixel[1].size_line, &game->create_pixel[1].endian);
+
+	game->create_pixel[2].image = mlx_xpm_file_to_image(game->mlx, game->south_texture, &game->create_pixel[2].width, &game->create_pixel[2].height);
+	game->create_pixel[2].image_data = (unsigned int *)mlx_get_data_addr(game->create_pixel[2].image, &game->create_pixel[2].bits_per_pixel, &game->create_pixel[2].size_line, &game->create_pixel[2].endian);
+
+	game->create_pixel[3].image = mlx_xpm_file_to_image(game->mlx, game->east_texture, &game->create_pixel[3].width, &game->create_pixel[3].height);
+	game->create_pixel[3].image_data = (unsigned int *)mlx_get_data_addr(game->create_pixel[3].image, &game->create_pixel[3].bits_per_pixel, &game->create_pixel[3].size_line, &game->create_pixel[3].endian);
+}
+
 void player_init(t_map *game)
 {
 	if (game->player == 'N')
@@ -26,6 +41,7 @@ void struct_initialisation(t_map *game)
 	ft_img_init(game->imge);
 	get_pos(game);
 	player_init(game);
+	texture_init(game);
 	game->cast->num_rays = WINDOW_WIDTH;
 }
 
@@ -144,7 +160,7 @@ void update_player(t_player *player, t_map *game)
 	if (check_wall(game, player->position_x / SCALE, y / SCALE) != 1)
 	{
 		player->position_y = y;
-		// printf("%f  ||  %f \n", x,y);
+		//printf("%f  ||  %f \n", x,y);
 	}
 	player->angle += player->turn_direction * player->rotation_speed;
 }

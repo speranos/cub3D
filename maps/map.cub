@@ -1,7 +1,7 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO ./nser1.xpm
+SO ./AnyConv.com__hitlerm7echer(1).xpm
+WE ./image.xpm
+EA ./AnyConv.com__raya1(1).xpm
 
 F 220,100,0
 C 225,32,0

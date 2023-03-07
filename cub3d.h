@@ -31,6 +31,8 @@ typedef struct s_cast
 	double dist;
 	double *dist_wall;
 	double *dist_wall2;
+	double *tab_x;
+	double *tab_y;
 } t_cast;
 
 typedef struct player_s
@@ -51,11 +53,23 @@ typedef struct player_s
 	int AD;
 } t_player;
 
+typedef	struct texture
+{
+	void *image;
+	int bits_per_pixel;
+	int size_line;
+	int endian;
+	int width;
+	unsigned int *image_data;
+	int height;
+}	t_texture;
+
 typedef struct map
 {
 	t_img *imge;
 	t_player *play;
 	t_cast *cast;
+	t_texture create_pixel[4];
 
 	void *mlx;
 	void *win;
