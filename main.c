@@ -6,11 +6,17 @@
 /*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 07:45:47 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/08 07:47:25 by aait-mas         ###   ########.fr       */
+/*   Updated: 2023/03/08 11:10:48 by aait-mas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	ft_close(t_map *game)
+{
+	mlx_destroy_window(game->mlx, game->win);
+	exit(0);
+}
 
 int	main(int ac, char **av)
 {
@@ -35,6 +41,7 @@ int	main(int ac, char **av)
 	mlx_hook(game->win, 06, (1L << 9), mouse_move, game);
 	mlx_hook(game->win, 02, (1L << 0), key_pressed, game->play);
 	mlx_hook(game->win, 03, (1L << 1), key_release, game->play);
+	mlx_hook(game->win, 17, 0, ft_close, game);
 	mlx_loop_hook(game->mlx, ft_draw, game);
 	mlx_loop(game->mlx);
 	ft_rm_rf(game);
