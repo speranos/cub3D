@@ -39,25 +39,3 @@ void	ft_p_error(t_map *cub)
 	printf("ERROR...Player should be surrounded by '0' or '1'\n");
 	ft_texture_exit(cub);
 }
-
-void	ft_wall_check(t_map *cub)
-{
-	int		i;
-	char	start;
-	int		line;
-	char	end;
-
-	i = 0;
-	line = 1;
-	ft_first_wall(cub);
-	while (cub->map[line])
-	{
-		start = ft_wall_zero(cub, line);
-		end = ft_wall_end(cub, line);
-		if (start != 49 || end != 49)
-			ft_wall_error(cub);
-		line++;
-	}
-	line--;
-	ft_last_wall(cub, line);
-}

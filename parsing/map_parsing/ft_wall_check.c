@@ -1,5 +1,27 @@
 #include "../cub_parsing.h"
 
+void	ft_wall_check(t_map *cub)
+{
+	int		i;
+	char	start;
+	int		line;
+	char	end;
+
+	i = 0;
+	line = 1;
+	ft_first_wall(cub);
+	while (cub->map[line])
+	{
+		start = ft_wall_zero(cub, line);
+		end = ft_wall_end(cub, line);
+		if (start != 49 || end != 49)
+			ft_wall_error(cub);
+		line++;
+	}
+	line--;
+	ft_last_wall(cub, line);
+}
+
 char	ft_wall_zero(t_map *cub, int line)
 {
 	int		i;
@@ -33,7 +55,7 @@ void	ft_first_wall(t_map *cub)
 	i = 0;
 	while (cub->map[0][i] != '*')
 	{
-		if (cub->map[0][i] >= 32 || cub->map[0][i] == 49)
+		if (cub->map[0][i] <= 32 || cub->map[0][i] == 49)
 			i++;
 		else
 			ft_wall_error(cub);
@@ -52,4 +74,10 @@ void	ft_last_wall(t_map *cub, int line)
 		else
 			ft_wall_error(cub);
 	}
+}
+
+void	ft_wall_error(t_map *cub)
+{
+	printf("ERROR...Map must be surrounded by 1\n");
+	ft_texture_exit(cub);
 }

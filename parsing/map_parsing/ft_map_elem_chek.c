@@ -1,76 +1,65 @@
 #include "../cub_parsing.h"
 
-void	ft_map_elem_check(char **map, t_map *cub)
+void	ft_map_char_check(char *map, t_map *cub)
 {
-	ft_validate(cub);
-	ft_skip_new_line(cub, map);
-	ft_map_char_check(*map, cub);
-	ft_add_map_to_strc(cub, map);
-	ft_wall_check(cub);
-	ft_last_check(cub);
+	int	i;
+	int	p;
+
+	i = 0;
+	p = 0;
+	while (map[i])
+	{
+		if (map[i] <= 32)
+			i++;
+		else if (map[i] == '1' || map[i] == '0')
+			i++;
+		else if (map[i] == 'S' || map[i] == 'W'
+			|| map[i] == 'N' || map[i] == 'E')
+		{
+			cub->player = map[i];
+			p++;
+			i++;
+		}
+		else
+			ft_diff_element(cub, map[i]);
+	}
+	if (p != 1)
+		ft_player_erro(cub);
 }
 
-void	ft_validate(t_map *cub)
+void	ft_diff_element(t_map *cub, char c)
 {
-	if (!cub->ceilling_rgb || !cub->floor_rgb)
-		ft_map_error(cub, 'c');
-	if (!cub->e_t || !cub->n_t || !cub->s_t || !cub->w_t)
-		ft_map_error(cub, 't');
-}
-
-void	ft_map_error(t_map *cub, char c)
-{
-	if (c == 'c')
-		printf("ERROR...Missing color\n");
-	else if (c == 't')
-		printf("ERROR...Missing texture\n");
+	printf("ERROR...'%c' Unsupported character in the map\n", c);
 	ft_texture_exit(cub);
 }
 
-void	ft_add_map_to_strc(t_map *cub, char **map)
+void	ft_player_erro(t_map *cub)
 {
-	int	len;
-	int	num_of_line;
-	int	i;
-
-	i = 0;
-	len = ft_get_gbl_len_of_line(*map);
-	num_of_line = ft_get_num_of_line(*map);
-	cub->x = len;
-	cub->y = num_of_line;
-	cub->map = malloc(sizeof(char *) * (num_of_line + 1));
-	while (i < num_of_line)
-	{
-		cub->map[i] = malloc(sizeof(char) * (len + 1));
-		i++;
-	}
-	ft_map_to_map(cub, *map, num_of_line, len);
-	i = 0;
-	while (cub->map[i])
-		printf("%s\n", cub->map[i++]);
+	printf("ERROR...You entered more or less \
+		than the required number of player\n");
+	ft_texture_exit(cub);
 }
 
-int	ft_get_gbl_len_of_line(char *map)
+void	ft_last_check(t_map *cub)
 {
-	int	i;
-	int	len;
-	int	tmp;
+	int		line;
+	int		i;
+	char	c;
 
+	line = 0;
 	i = 0;
-	len = 0;
-	tmp = 0;
-	while (map[i])
+	while (cub->map[line])
 	{
-		if (map[i] == '\n')
+		while (cub->map[line][i])
 		{
-			if (tmp < len)
-				tmp = len;
-			len = 0;
+			c = cub->map[line][i];
+			if (c == '0')
+				ft_zero_check(cub, line, i);
+			else if (c == cub->player)
+				ft_p_check(cub, line, i);
+			i++;
 		}
-		i++;
-		len++;
-		if (map[i] == '\0' && tmp < len)
-			tmp = len;
+		i = 0;
+		line++;
 	}
-	return (tmp);
 }

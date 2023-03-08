@@ -11,7 +11,7 @@ void	ft_texture_check(char **map, t_map *cub)
 			break ;
 		if (cub->c0 == 'N' || cub->c0 == 'S'
 			|| cub->c0 == 'W' || cub->c0 == 'E')
-			ft_to_vald_texture(map, cub);
+			ft_texture_valid(map, cub);
 		else if (cub->c0 == 'F' || cub->c0 == 'C')
 			ft_rgb_valide(map, cub, cub->c0);
 		else if (cub->c0 <= 32)
@@ -33,49 +33,23 @@ int	ft_alpha(char c, char **map)
 	return (0);
 }
 
-void	ft_valide_path(char **map, t_map *cub, char c0, char c1)
+void	ft_texture_valid(char **map, t_map *cub)
 {
-	int		i;
-	char	*tmp;
-
-	ft_check_second_char(cub, c0, c1);
 	(*map)++;
-	if (*map[0] > 32)
-	{
-		printf("ERROR...Texture must separated by space\n");
-		ft_texture_exit(cub);
-	}
-	ft_skip_space(map);
-	i = ft_get_len_new_line(*map);
-	tmp = malloc(sizeof(char) * (i + 1));
-	i = 0;
-	while (*map[0] && *map[0] != '\n')
-	{
-		tmp[i++] = *map[0];
-		(*map)++;
-	}
-	tmp[i] = '\0';
-	ft_add_txr_struc(tmp, cub, c0);
+	cub->c1 = *map[0];
+	ft_valide_path(map, cub, cub->c0, cub->c1);
 }
 
-int	ft_get_len_new_line(char *map)
+int	ft_end_check(t_map *cub)
 {
-	int	i;
-
-	i = 0;
-	while (map[i] && map[i] != '\n')
-	{
-		i++;
-	}
-	return (i);
+	if (cub->ceilling_rgb && cub->e_t && cub->floor_rgb
+		&& cub->n_t && cub->s_t && cub->w_t)
+		return (1);
+	return (0);
 }
 
-void	ft_skip_space(char **map)
+void	ft_undifiende_error(t_map *cub)
 {
-	while (*map[0] && *map[0] <= 32)
-	{
-		if (*map[0] == '\n')
-			break ;
-		(*map)++;
-	}
+	printf("ERROR...Undifiende character: %c\n", cub->c0);
+	ft_texture_exit(cub);
 }

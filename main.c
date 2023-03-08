@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aoueldma <aoueldma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 07:45:47 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/08 11:10:48 by aait-mas         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:06:35 by aoueldma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int	main(int ac, char **av)
 	game->cast->tab_x = malloc(sizeof(double) * 1080);
 	game->cast->tab_y = malloc(sizeof(double) * 1080);
 	ft_check_arg(ac, av);
-	cub3d(av, game);
+	ft_read_map(av, game);
 	game->mlx = mlx_init();
-	game->win = mlx_new_window(game->mlx, 1080, 720, "CUB3D FANBOY");
+	game->win = mlx_new_window(game->mlx, 1080, 720, "CUB3D");
 	struct_initialisation(game);
 	ft_draw(game);
 	mlx_hook(game->win, 04, (1L << 2), mouse_click, game);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aoueldma <aoueldma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 09:56:30 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/08 09:56:31 by aait-mas         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:01:10 by aoueldma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,8 @@ typedef struct map
 
 }	t_map;
 
-void	cub3d(char **av, t_map *game);
+void	ft_read_map(char **av, t_map *cub);
+void	ft_texture_check(char **map, t_map *cub);
 void	ft_map_elem_check(char **map, t_map *cub);
 void	ft_texture_check(char **map, t_map *cub);
 int		ft_alpha(char c, char **map);
@@ -127,7 +128,6 @@ void	ft_validate(t_map *cub);
 void	ft_undifiende_error(t_map *cub);
 void	ft_check_second_char(t_map *cub, char c0, char c1);
 int		ft_end_check(t_map *cub);
-void	ft_to_vald_texture(char **map, t_map *cub);
 void	ft_add_map_to_strc(t_map *cub, char **map);
 int		ft_get_gbl_len_of_line(char *map);
 int		ft_get_num_of_line(char *mp);
@@ -152,6 +152,7 @@ void	ft_free_map(t_map *cub);
 void	ft_free_element(t_map *cub);
 void	ft_rm_rf(t_map *cub);
 int		ft_len(char *str);
+void	ft_texture_valid(char **map, t_map *cub);
 void	put_pixels(t_map *game);
 
 // RAYCASTING

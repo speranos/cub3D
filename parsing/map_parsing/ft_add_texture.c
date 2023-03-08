@@ -24,3 +24,20 @@ void	ft_add_txr_struc(char *tmp, t_map *cub, char c)
 		ft_texture_exit(cub);
 	}
 }
+
+void	ft_texture_exit(t_map *cub)
+{
+	if (cub->n_t)
+		free(cub->n_t);
+	if (cub->e_t)
+		free(cub->e_t);
+	if (cub->s_t)
+		free(cub->s_t);
+	if (cub->w_t)
+		free(cub->w_t);
+	if (cub->ceilling_rgb)
+		free(cub->ceilling_rgb);
+	if (cub->floor_rgb)
+		free(cub->floor_rgb);
+	exit(0);
+}

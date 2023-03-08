@@ -48,15 +48,3 @@ void	ft_rgb_error(t_map *cub)
 	ft_texture_exit(cub);
 }
 
-void	ft_num_to_struct(t_map *cub, char **map, char c)
-{
-	if (c == 'F' && !cub->floor_rgb)
-		ft_add_floor(cub, map);
-	else if (c == 'C' && !cub->ceilling_rgb)
-		ft_add_ceilling(cub, map);
-	else
-	{
-		printf("ERROR...RGB entered twice\n");
-		ft_texture_exit(cub);
-	}
-}

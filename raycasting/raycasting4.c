@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting4.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aoueldma <aoueldma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 03:40:06 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/08 09:53:16 by aait-mas         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:07:23 by aoueldma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,6 @@ void	struct_initialisation(t_map *game)
 	get_pos(game);
 	player_init(game);
 	texture_init(game);
+	printf("SDRGSEHRS\n");
 	game->cast->num_rays = WINDOW_WIDTH;
 }

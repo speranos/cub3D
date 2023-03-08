@@ -37,7 +37,7 @@ void	ft_init_strc(t_map *cub)
 	cub->floor_rgb = NULL;
 }
 
-void	cub3d(char **av, t_map *cub)
+void	ft_read_map(char **av, t_map *cub)
 {
 	char	*full_map;
 	char	*tmp;
