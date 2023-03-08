@@ -1,7 +1,7 @@
-NO ./nser1.xpm
-SO ./AnyConv.com__hitlerm7echer(1).xpm
-WE ./image.xpm
-EA ./AnyConv.com__raya1(1).xpm
+NO ./textures/ttt.xpm
+SO ./textures/ddd.xpm
+WE ./textures/AnyConv.com__hitlerm7echer(1).xpm
+EA ./textures/nser1.xpm
 
 F 220,100,0
 C 225,32,0

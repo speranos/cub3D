@@ -1,6 +1,6 @@
 #include "../cub_parsing.h"
 
-void ft_check_arg(int ac, char **av)
+void	ft_check_arg(int ac, char **av)
 {
 	if (ac != 2)
 	{
@@ -11,11 +11,11 @@ void ft_check_arg(int ac, char **av)
 	ft_dot_check(av[1]);
 }
 
-void ft_dot_check(char *str)
+void	ft_dot_check(char *str)
 {
-	int i;
-	char *tmp_str;
-	int a;
+	char	*tmp_str;
+	int		a;
+	int		i;
 
 	tmp_str = "cub\0";
 	i = ft_len(str);
@@ -26,16 +26,16 @@ void ft_dot_check(char *str)
 		{
 			printf("ERROR...Map fromat should be *.cub !!!\n");
 			exit(0);
-			return;
+			return ;
 		}
 		i--;
 		a--;
 	}
 }
 
-void ft_fd_check(char *str)
+void	ft_fd_check(char *str)
 {
-	int fd;
+	int	fd;
 
 	fd = open(str, O_RDONLY);
 	if (fd == -1)

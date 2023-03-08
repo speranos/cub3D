@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting2.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/08 03:39:58 by aait-mas          #+#    #+#             */
+/*   Updated: 2023/03/08 03:52:54 by aait-mas         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
 
-int ft_strlen(char *s)
+int	ft_strlen(char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[i])
@@ -10,23 +22,25 @@ int ft_strlen(char *s)
 	return (i);
 }
 
-void ft_image(t_map *game)
+void	ft_image(t_map *game)
 {
 	game->imge->img = mlx_new_image(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
-	game->imge->add_img = mlx_get_data_addr(game->imge->img, &game->imge->bits_per_pixel, &game->imge->size_line, &game->imge->endian);
+	game->imge->add_img = mlx_get_data_addr(game->imge->img, \
+		&game->imge->bits_per_pixel, &game->imge->size_line, \
+		&game->imge->endian);
 }
 
-void ft_img_init(t_img *img)
+void	ft_img_init(t_img *img)
 {
 	img->bits_per_pixel = 0;
 	img->size_line = 0;
 	img->endian = 0;
 }
 
-void get_pos(t_map *game)
+void	get_pos(t_map *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (game->map[i])
@@ -34,7 +48,8 @@ void get_pos(t_map *game)
 		j = 0;
 		while (game->map[i][j])
 		{
-			if (game->map[i][j] == 'N' || game->map[i][j] == 'W' || game->map[i][j] == 'S' || game->map[i][j] == 'E')
+			if (game->map[i][j] == 'N' || game->map[i][j] == 'W'
+			|| game->map[i][j] == 'S' || game->map[i][j] == 'E')
 			{
 				game->play->position_y_map = i;
 				game->play->position_x_map = j;
@@ -45,13 +60,14 @@ void get_pos(t_map *game)
 	}
 }
 
-void my_mlx_pixel_put(t_map *game, int x, int y, int color)
+void	my_mlx_pixel_put(t_map *game, int x, int y, int color)
 {
-	char *dst;
+	char	*dst;
 
 	if (x >= 0 && y >= 0 && x < WINDOW_WIDTH && y < WINDOW_HEIGHT)
 	{
-		dst = game->imge->add_img + (y * game->imge->size_line + x * (game->imge->bits_per_pixel / 8));
+		dst = game->imge->add_img + \
+			(y * game->imge->size_line + x * (game->imge->bits_per_pixel / 8));
 		*(unsigned int *)dst = color;
 	}
 }

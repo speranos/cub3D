@@ -1,8 +1,8 @@
 #include "../cub_parsing.h"
 
-int ft_searche(char *buf)
+int	ft_searche(char *buf)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!buf)
@@ -16,11 +16,11 @@ int ft_searche(char *buf)
 	return (0);
 }
 
-char *ft_joint(char *left, char *buf)
+char	*ft_joint(char *left, char *buf)
 {
-	char *ret;
-	int i;
-	int a;
+	char	*ret;
+	int		i;
+	int		a;
 
 	if (!buf)
 		return (NULL);
@@ -41,10 +41,10 @@ char *ft_joint(char *left, char *buf)
 	return (ret);
 }
 
-char *ft_line(char *left)
+char	*ft_line(char *left)
 {
-	int i;
-	char *line;
+	int		i;
+	char	*line;
 
 	if (!left)
 		return (NULL);
@@ -58,7 +58,7 @@ char *ft_line(char *left)
 		if (i > 0)
 		{
 			if (left[i - 1] == '\n')
-				break;
+				break ;
 		}
 		line[i] = left[i];
 		i++;
@@ -67,11 +67,11 @@ char *ft_line(char *left)
 	return (line);
 }
 
-char *ft_update_left(char *left)
+char	*ft_update_left(char *left)
 {
-	char *update;
-	int i;
-	int a;
+	char	*update;
+	int		i;
+	int		a;
 
 	if (!left)
 		return (NULL);
@@ -91,9 +91,9 @@ char *ft_update_left(char *left)
 	return (update);
 }
 
-int ft_new_line_len(char *str)
+int	ft_new_line_len(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str)

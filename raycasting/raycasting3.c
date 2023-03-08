@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting3.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/08 03:40:01 by aait-mas          #+#    #+#             */
+/*   Updated: 2023/03/08 09:53:16 by aait-mas         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
 
-void print_rect(t_map *game, int x, int y, int z, unsigned int color)
+void	print_rect(t_map *game, int x, int y, unsigned int color)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
-	while (i < z)
+	while (i < SCALE2)
 	{
 		j = 0;
-		while (j < z)
+		while (j < SCALE2)
 		{
 			my_mlx_pixel_put(game, y + j, x + i, color);
 			j++;
@@ -18,33 +30,35 @@ void print_rect(t_map *game, int x, int y, int z, unsigned int color)
 	}
 }
 
-void put_pixels(t_map *game)
+void	put_pixels(t_map *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
+
 	j = 0;
 	i = 0;
-
 	while (game->map[i])
 	{
 		j = 0;
 		while (game->map[i][j] != '\0')
 		{
 			if (game->map[i][j] == '1')
-				print_rect(game, i * SCALE2, j * SCALE2, SCALE2, 0x0000080);
-			else if (game->map[i][j] == '0' || game->map[i][j] == 'W' || game->map[i][j] == 'N' || game->map[i][j] == 'E' || game->map[i][j] == 'S')
-				print_rect(game, i * SCALE2, j * SCALE2, SCALE2, 0xC0C0C0);
+				print_rect(game, i * SCALE2, j * SCALE2, 0x0000080);
+			else if (game->map[i][j] == '0' || game->map[i][j] == 'W'
+				|| game->map[i][j] == 'N'
+				|| game->map[i][j] == 'E' || game->map[i][j] == 'S')
+				print_rect(game, i * SCALE2, j * SCALE2, 0xC0C0C0);
 			j++;
 		}
 		i++;
 	}
 }
 
-void draw_circle(t_map *game)
+void	draw_circle(t_map *game)
 {
-	double radius;
-	double angle;
-	int i;
+	double	radius;
+	double	angle;
+	int		i;
 
 	i = 0;
 	angle = 0;
@@ -57,11 +71,33 @@ void draw_circle(t_map *game)
 			i = 0;
 			while (i < radius)
 			{
-				my_mlx_pixel_put(game, game->play->position_x + i * cos(angle), game->play->position_y + i * sin(angle), 0x008000);
+				my_mlx_pixel_put(game, game->play->position_x + i * cos(angle), \
+				game->play->position_y + i * sin(angle), 0x008000);
 				i++;
 			}
 			angle += 0.1f;
 		}
 		radius++;
 	}
+}
+
+void	player_init(t_map *game)
+{
+	if (game->player == 'N')
+		game->play->angle = 360 * M_PI / 180;
+	else if (game->player == 'S')
+		game->play->angle = 180 * M_PI / 180;
+	else if (game->player == 'W')
+		game->play->angle = 270 * M_PI / 180;
+	else if (game->player == 'E')
+		game->play->angle = 90 * M_PI / 180;
+	game->play->ad = 0;
+	game->play->move_speed = 4;
+	game->play->turn_direction = 0;
+	game->play->walk_direction = 0;
+	game->play->rotation_speed = (M_PI / 180) * 4;
+	game->play->position_x = game->play->position_x_map * SCALE + 16;
+	game->play->position_y = game->play->position_y_map * SCALE + 16;
+	game->play->pos_x_m_map = game->play->position_x_map * SCALE2 + 4;
+	game->play->pos_y_m_map = game->play->position_y_map * SCALE2 + 4;
 }
