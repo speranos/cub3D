@@ -6,11 +6,10 @@ F 220,100,0
 C 225,0,0
 
 
-NO   ./textures/ss
-SO   ./textures/AnyConv.com__hitlerm7echer(1).xpm
-WE ./textures/ddd.xpm
-EA ./textures/nser1.xpm
-
+NO   ./textures/raya1.xpm
+SO   ./textures/brick1.xpm
+WE ./textures/fire_flag.xpm
+EA ./textures/hitlerm7echer.xpm
 
                  
         1111111111111111111111111

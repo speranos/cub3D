@@ -6,7 +6,7 @@
 /*   By: aoueldma <aoueldma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 09:56:30 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/10 11:45:50 by aoueldma         ###   ########.fr       */
+/*   Updated: 2023/03/10 21:54:59 by aoueldma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,16 @@
 # define WINDOW_HEIGHT 720
 # define SCALE 32
 # define SCALE2 8
-
+# define TEXTURE_WIDTH 128
+# define WALL_SIZE 32
 # include <mlx.h>
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "parsing/cub_parsing.h"
+# include "parsing/ft_get_next_line/get_next_line.h"
+# include "parsing/args_check/ft_args_check.h"
+# include <math.h>
 
 typedef struct s_img
 {
@@ -111,7 +114,9 @@ typedef struct map
 
 }	t_map;
 
-
+int		set_tex_y(t_map *game, int mid, int i);
+int		set_offsetx(t_map *game, int i, int d);
+int		get_tex_color(t_map *game, int d, int index);
 void	ft_rgb_to_hexa(t_map *cub, char c);
 void	ft_read_map(char **av, t_map *cub);
 void	ft_texture_check(char **map, t_map *cub);

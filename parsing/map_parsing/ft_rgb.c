@@ -1,4 +1,16 @@
-#include "../cub_parsing.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_rgb.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aoueldma <aoueldma@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/10 12:21:40 by aoueldma          #+#    #+#             */
+/*   Updated: 2023/03/10 12:23:40 by aoueldma         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../cub3d.h"
 
 void	ft_rgb_valide(char **map, t_map *cub, char c)
 {
@@ -47,4 +59,3 @@ void	ft_rgb_error(t_map *cub)
 	printf("ERORR...RGB\n");
 	ft_texture_exit(cub);
 }
-

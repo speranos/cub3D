@@ -1,4 +1,16 @@
-#include "../cub_parsing.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_validate_texture.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aoueldma <aoueldma@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/10 12:22:02 by aoueldma          #+#    #+#             */
+/*   Updated: 2023/03/10 12:25:12 by aoueldma         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../cub3d.h"
 
 void	ft_valide_path(char **map, t_map *cub, char c0, char c1)
 {
@@ -41,7 +53,6 @@ void	ft_check_second_char(t_map *cub, char c0, char c1)
 		ft_texture_exit(cub);
 	}
 }
-
 
 int	ft_get_len_new_line(char *map)
 {

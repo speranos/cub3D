@@ -1,4 +1,16 @@
-#include "../cub_parsing.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_map_parse.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aoueldma <aoueldma@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/10 12:21:21 by aoueldma          #+#    #+#             */
+/*   Updated: 2023/03/10 12:23:22 by aoueldma         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../cub3d.h"
 
 void	ft_map_elem_check(char **map, t_map *cub)
 {
@@ -26,4 +38,3 @@ void	ft_map_error(t_map *cub, char c)
 		printf("ERROR...Missing texture\n");
 	ft_texture_exit(cub);
 }
-
