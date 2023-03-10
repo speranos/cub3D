@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoueldma <aoueldma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 03:39:53 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/10 21:50:38 by aoueldma         ###   ########.fr       */
+/*   Updated: 2023/03/11 00:06:51 by aait-mas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	get_distance(t_map *game, double *angle_ray, int j, double i)
 		*angle_ray += 0.00097;
 }
 
-void	floor_ceeling(t_map *cube)
+void	floor_ceeling(t_map *game)
 {
 	int	i;
 	int	j;
@@ -99,7 +99,7 @@ void	floor_ceeling(t_map *cube)
 		j = 0;
 		while (j < WINDOW_WIDTH)
 		{
-			my_mlx_pixel_put(cube, j, i, cube->c_rgb);
+			my_mlx_pixel_put(game, j, i, game->c_rgb);
 			j++;
 		}
 		i++;
@@ -110,7 +110,7 @@ void	floor_ceeling(t_map *cube)
 		j = 0;
 		while (j < WINDOW_WIDTH)
 		{
-			my_mlx_pixel_put(cube, j, i + WINDOW_HEIGHT / 2, cube->f_rgb);
+			my_mlx_pixel_put(game, j, i + WINDOW_HEIGHT / 2, game->f_rgb);
 			j++;
 		}
 		i++;

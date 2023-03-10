@@ -6,7 +6,7 @@
 /*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 03:40:01 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/08 09:53:16 by aait-mas         ###   ########.fr       */
+/*   Updated: 2023/03/11 00:05:41 by aait-mas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,30 +24,6 @@ void	print_rect(t_map *game, int x, int y, unsigned int color)
 		while (j < SCALE2)
 		{
 			my_mlx_pixel_put(game, y + j, x + i, color);
-			j++;
-		}
-		i++;
-	}
-}
-
-void	put_pixels(t_map *game)
-{
-	int	i;
-	int	j;
-
-	j = 0;
-	i = 0;
-	while (game->map[i])
-	{
-		j = 0;
-		while (game->map[i][j] != '\0')
-		{
-			if (game->map[i][j] == '1')
-				print_rect(game, i * SCALE2, j * SCALE2, 0x0000080);
-			else if (game->map[i][j] == '0' || game->map[i][j] == 'W'
-				|| game->map[i][j] == 'N'
-				|| game->map[i][j] == 'E' || game->map[i][j] == 'S')
-				print_rect(game, i * SCALE2, j * SCALE2, 0xC0C0C0);
 			j++;
 		}
 		i++;
@@ -72,7 +48,7 @@ void	draw_circle(t_map *game)
 			while (i < radius)
 			{
 				my_mlx_pixel_put(game, game->play->position_x + i * cos(angle), \
-				game->play->position_y + i * sin(angle), 0x008000);
+				game->play->position_y + i * sin(angle), 0x00ff0000);
 				i++;
 			}
 			angle += 0.1f;

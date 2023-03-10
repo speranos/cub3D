@@ -3,18 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting4.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoueldma <aoueldma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 03:40:06 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/08 15:07:23 by aoueldma         ###   ########.fr       */
+/*   Updated: 2023/03/11 00:07:00 by aait-mas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+void	put_pixels(t_map *game)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	i = 0;
+	while (game->map[i])
+	{
+		j = 0;
+		while (game->map[i][j] != '\0')
+		{
+			if (game->map[i][j] == '1')
+				print_rect(game, i * SCALE2, j * SCALE2, 0x00ffffff);
+			else if (game->map[i][j] == '0' || game->map[i][j] == 'W'
+				|| game->map[i][j] == 'N'
+				|| game->map[i][j] == 'E' || game->map[i][j] == 'S')
+				print_rect(game, i * SCALE2, j * SCALE2, game->c_rgb);
+			j++;
+		}
+		i++;
+	}
+}
+
 void	ft_draw_player_mini_map(t_map *game)
 {
-	double	i;
+	double	move;
 	double	x;
 	double	y;
 	double	angle;
@@ -24,17 +48,17 @@ void	ft_draw_player_mini_map(t_map *game)
 	max_ang = game->play->angle + (30 * M_PI / 180);
 	while (angle < max_ang)
 	{
-		i = 0;
-		x = game->play->pos_x_m_map + i * cos(angle);
-		y = game->play->pos_y_m_map + i * sin(angle);
-		while (x < WINDOW_WIDTH && y < WINDOW_HEIGHT)
+		move = 0;
+		x = game->play->pos_x_m_map + move * cos(angle);
+		y = game->play->pos_y_m_map + move * sin(angle);
+		while (x < WINDOW_WIDTH && y < WINDOW_HEIGHT && move < 24)
 		{
-			x = game->play->pos_x_m_map + i * cos(angle);
-			y = game->play->pos_y_m_map + i * sin(angle);
+			x = game->play->pos_x_m_map + move * cos(angle);
+			y = game->play->pos_y_m_map + move * sin(angle);
 			if (check_wall(game, (int)x / SCALE2, (int)y / SCALE2))
 				break ;
-			my_mlx_pixel_put(game, (int)x, (int)y, 0x00FDEE00);
-			i += 0.05;
+			my_mlx_pixel_put(game, (int)x, (int)y, 0x00FF0000);
+			move += 4;
 		}
 		angle += 0.00097;
 	}

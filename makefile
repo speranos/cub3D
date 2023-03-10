@@ -1,17 +1,18 @@
-NAME = cub3D
-CC = cc
-CFLAGS = -Wall -Wextra -Werror  #-fsanitize=address -g3
-SRCS = parsing/args_check/*.c parsing/map_parsing/*.c parsing/ft_get_next_line/*.c *.c raycasting/*.c
+NAME		=	cub3D
+CC 			=	gcc
+CFLAGS 		=	-Wall -Wextra -Werror                                                                                                                                                                                                                                             -O3
+SRCS		=	parsing/map_parsing/*.c parsing/args_check/*.c parsing/ft_get_next_line/*.c *.c raycasting/*.c
 
-all : $(NAME)
+all			:	$(NAME)
 
-$(NAME) :
-	@$(CC)  $(CFLAGS) $(SRCS)  -lmlx -framework OpenGL -framework AppKit -o $(NAME)                                                                                                                                                                                                                                     -O3                                                                                  
-	@echo YOUR ARE READY TO GO !!!
-clean :
-	@rm -rf $(OBJS)
-	@echo CLEAN !!!
-fclean :
-	@rm -rf $(NAME) $(OBJS)
-	@echo RESET ...
-re : fclean all
+$(NAME)		:	
+				@$(CC) $(CFLAGS) $(SRCS) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+				@echo "\033[32m\033[1m YOUR ARE READY TO GO ! \033[0m"
+clean		:
+				@rm -rf $(OBJS_M)
+				@echo "\033[31m\033[1m All is clean ! \033[0m"
+
+fclean		:	clean
+				@rm -rf $(NAME)
+
+re			:	fclean all
