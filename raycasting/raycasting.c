@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aoueldma <aoueldma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 03:39:53 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/08 09:53:16 by aait-mas         ###   ########.fr       */
+/*   Updated: 2023/03/10 11:56:10 by aoueldma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,59 +88,69 @@ void	get_distance(t_map *game, double *angle_ray, int j, double i)
 		*angle_ray += 0.00097;
 }
 
+int	get_tex_color(t_map *game, int d, int index)
+{
+	int	color;
+
+	color = game->create_pixel[d].image_data[index];
+	return(color);
+}
+
+int	set_offsetx(t_map *game, int i, int d)
+{
+	if ((int)game->cast->tab_x[i] % 32 > 0 && (int)game->cast->tab_x[i] % 32 < 31 && (int)game->cast->tab_y[i] % 32 == 0)
+	{
+		game->offsetx = (int)game->cast->tab_x[i] % 32;
+		d = 0;
+	}
+	else if ((int)game->cast->tab_y[i] % 32 > 0 && (int)game->cast->tab_y[i] % 32 < 31 && (int)game->cast->tab_x[i] % 32 == 31)
+	{
+		game->offsetx = (int)game->cast->tab_y[i] % 32;
+		d = 1;
+	}
+	else if ((int)game->cast->tab_x[i] % 32 > 0 && (int)game->cast->tab_x[i] % 32 < 31 && (int)game->cast->tab_y[i] % 32 == 31)
+	{
+		game->offsetx = (int)game->cast->tab_x[i] % 32;
+		d = 2;
+	}
+	else if ((int)game->cast->tab_y[i] % 32 > 0 && (int)game->cast->tab_y[i] % 32 < 31 && (int)game->cast->tab_x[i] % 32 == 0)
+	{
+		game->offsetx = (int)game->cast->tab_y[i] % 32;
+		d = 3;
+	}
+	return(d);
+}
+
 void	draw_walls(t_map *game)
 {
-    int	toppixel;
-    int	lowpixel;
     int	mid;
-	
-	mid = WINDOW_HEIGHT / 2;
-	
-    int	i = 0;
+    int	i;
     int	tex_y;
     int	index;
-    int	color;
-    int	offsetx;
-    int	offsety;
-	int	d = 0;
+	int	d;
 
+	d = 0;
+	i = 0;
+	mid = WINDOW_HEIGHT / 2;
     while (i < WINDOW_WIDTH)
     {
-    	toppixel = mid - game->cast->dist_wall2[i] * 0.7f;
-		lowpixel = mid + game->cast->dist_wall2[i] * 0.7f;
-		offsetx = (int)game->cast->tab_y[i] % 32;
-        while (toppixel <= lowpixel)
+    	game->toppixel = mid - game->cast->dist_wall2[i] * 0.7f;
+		game->lowpixel = mid + game->cast->dist_wall2[i] * 0.7f;
+		game->offsetx = (int)game->cast->tab_y[i] % 32;
+        while (game->toppixel <= game->lowpixel)
         {
-			if ((int)game->cast->tab_x[i] % 32 > 0 && (int)game->cast->tab_x[i] % 32 < 31 && (int)game->cast->tab_y[i] % 32 == 0)
-			{
-				offsetx = (int)game->cast->tab_x[i] % 32;
-				d = 0;
-			}
-			else if ((int)game->cast->tab_y[i] % 32 > 0 && (int)game->cast->tab_y[i] % 32 < 31 && (int)game->cast->tab_x[i] % 32 == 31)
-			{
-				offsetx = (int)game->cast->tab_y[i] % 32;
-				d = 1;
-			}
-			else if ((int)game->cast->tab_x[i] % 32 > 0 && (int)game->cast->tab_x[i] % 32 < 31 && (int)game->cast->tab_y[i] % 32 == 31)
-			{
-				offsetx = (int)game->cast->tab_x[i] % 32;
-				d = 2;
-			}
-			else if ((int)game->cast->tab_y[i] % 32 > 0 && (int)game->cast->tab_y[i] % 32 < 31 && (int)game->cast->tab_x[i] % 32 == 0)
-			{
-				offsetx = (int)game->cast->tab_y[i] % 32;
-				d = 3;
-			}
-            tex_y = (int)(((float)(toppixel - mid + game->cast->dist_wall2[i] * 0.7f) / (float)(2.0f * game->cast->dist_wall2[i] * 0.7f)) * (float)32);
-            offsety = (int)(tex_y % 32);
-            index = (32 * offsety) + offsetx;
-            color = game->create_pixel[d].image_data[index];
-            my_mlx_pixel_put(game, i, toppixel, color);
-            toppixel++;
+			d = set_offsetx(game, i, d);
+            tex_y = (int)(((float)(game->toppixel - mid + game->cast->dist_wall2[i] * 0.7f) / (float)(2.0f * game->cast->dist_wall2[i] * 0.7f)) * (float)32);
+            game->offsety = (int)(tex_y % 32);
+            index = (32 * game->offsety) + game->offsetx;
+            my_mlx_pixel_put(game, i, game->toppixel, get_tex_color(game, d, index));
+           game->toppixel++;
         }
         i++;
     }
 }
+
+
 
 void	floor_ceeling(t_map *cube)
 {
@@ -153,7 +163,7 @@ void	floor_ceeling(t_map *cube)
 		j = 0;
 		while (j < WINDOW_WIDTH)
 		{
-			my_mlx_pixel_put(cube, j, i, 0x00BFFF);
+			my_mlx_pixel_put(cube, j, i, cube->c_rgb/*0x00BFFF*/);
 			j++;
 		}
 		i++;
@@ -164,7 +174,7 @@ void	floor_ceeling(t_map *cube)
 		j = 0;
 		while (j < WINDOW_WIDTH)
 		{
-			my_mlx_pixel_put(cube, j, i + WINDOW_HEIGHT / 2, 0xC0C0C0);
+			my_mlx_pixel_put(cube, j, i + WINDOW_HEIGHT / 2, cube->f_rgb/*0xC0C0C0*/);
 			j++;
 		}
 		i++;

@@ -32,6 +32,7 @@ void	ft_add_floor(t_map *cub, char **map)
 			break ;
 		(*map)++;
 	}
+	ft_rgb_to_hexa(cub, 'f');
 	(*map)++;
 }
 
@@ -54,6 +55,7 @@ void	ft_add_ceilling(t_map *cub, char **map)
 			break ;
 		(*map)++;
 	}
+	ft_rgb_to_hexa(cub, 'c');
 	(*map)++;
 }
 

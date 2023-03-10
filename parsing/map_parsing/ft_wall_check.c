@@ -14,8 +14,13 @@ void	ft_wall_check(t_map *cub)
 	{
 		start = ft_wall_zero(cub, line);
 		end = ft_wall_end(cub, line);
-		if (start != 49 || end != 49)
+		if ((start != ' ' && start != 49) || (end != 49 && end != ' '))
+		{
+			printf("line >>>>>>>>>>> %d\n", line);
+			printf("start >>>>>>>>>>> %c\n", start);
+			printf("end >>>>>>>>>>> %c\n", end);
 			ft_wall_error(cub);
+		}
 		line++;
 	}
 	line--;
@@ -28,7 +33,7 @@ char	ft_wall_zero(t_map *cub, int line)
 	char	c;
 
 	i = 0;
-	while (cub->map[line][i] && cub->map[line][i] <= 32)
+	while (cub->map[line][i] && cub->map[line][i] <= 32 && cub->map[line][i + 1] != '*')
 		i++;
 	c = cub->map[line][i];
 	return (c);
@@ -58,7 +63,9 @@ void	ft_first_wall(t_map *cub)
 		if (cub->map[0][i] <= 32 || cub->map[0][i] == 49)
 			i++;
 		else
+		{
 			ft_wall_error(cub);
+		}
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: aoueldma <aoueldma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 09:56:30 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/08 15:01:10 by aoueldma         ###   ########.fr       */
+/*   Updated: 2023/03/10 11:45:50 by aoueldma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ typedef struct map
 	char		c0;
 	char		c1;
 	int			tmp;
+	int			c_rgb;
+	int			f_rgb;
 	int			x;
 	int			y;
 	char		**map;
@@ -102,9 +104,15 @@ typedef struct map
 	char		*s_t;
 	char		*w_t;
 	char		*e_t;
+	int			offsetx;
+	int			offsety;
+	int			lowpixel;
+	int			toppixel;
 
 }	t_map;
 
+
+void	ft_rgb_to_hexa(t_map *cub, char c);
 void	ft_read_map(char **av, t_map *cub);
 void	ft_texture_check(char **map, t_map *cub);
 void	ft_map_elem_check(char **map, t_map *cub);

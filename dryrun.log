@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/aoueldma/Desktop/last_cub'
+cc  -Wall -Wextra -Werror   parsing/args_check/*.c parsing/map_parsing/*.c parsing/ft_get_next_line/*.c *.c raycasting/*.c  -lmlx -framework OpenGL -framework AppKit -o cub3D                                                                                                                                                                                                                                     -O3                                                                                  
+echo YOUR ARE READY TO GO !!!
+make: Leaving directory `/Users/aoueldma/Desktop/last_cub'
+ 
