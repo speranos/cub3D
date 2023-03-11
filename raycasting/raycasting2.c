@@ -6,7 +6,7 @@
 /*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 03:39:58 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/11 12:14:50 by aait-mas         ###   ########.fr       */
+/*   Updated: 2023/03/11 13:20:50 by aait-mas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,6 @@ void	ft_image(t_map *game)
 	game->imge->add_img = mlx_get_data_addr(game->imge->img, \
 		&game->imge->bits_per_pixel, &game->imge->size_line, \
 		&game->imge->endian);
-}
-
-void	ft_img_init(t_img *img)
-{
-	img->bits_per_pixel = 32;
-	img->size_line = 720 * (32 / 8);
-	img->endian = 10;
 }
 
 void	get_pos(t_map *game)

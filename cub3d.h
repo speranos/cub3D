@@ -6,7 +6,7 @@
 /*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 09:56:30 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/11 10:10:25 by aait-mas         ###   ########.fr       */
+/*   Updated: 2023/03/11 13:23:18 by aait-mas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
 # define WINDOW_WIDTH 1080
 # define WINDOW_HEIGHT 720
 # define SCALE 32
-# define SCALE2 8
+# define SCALE2 6
 
+# include "parsing/ft_get_next_line/get_next_line.h"
+# include "parsing/args_check/ft_args_check.h"
 # include <mlx.h>
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "parsing/ft_get_next_line/get_next_line.h"
-# include "parsing/args_check/ft_args_check.h"
 # include <math.h>
 
 typedef struct s_img
@@ -43,7 +43,6 @@ typedef struct s_cast
 	double	x_wall;
 	double	y_wall;
 	double	angle_ray;
-	int		num_rays;
 	double	dist;
 	double	*dist_wall;
 	double	*dist_wall2;
