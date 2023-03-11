@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoueldma <aoueldma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 09:56:30 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/10 21:54:59 by aoueldma         ###   ########.fr       */
+/*   Updated: 2023/03/11 10:10:25 by aait-mas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 # define WINDOW_HEIGHT 720
 # define SCALE 32
 # define SCALE2 8
-# define TEXTURE_WIDTH 128
-# define WALL_SIZE 32
+
 # include <mlx.h>
 # include <fcntl.h>
 # include <stdio.h>

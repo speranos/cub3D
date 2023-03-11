@@ -6,7 +6,7 @@
 /*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 03:40:06 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/11 00:07:00 by aait-mas         ###   ########.fr       */
+/*   Updated: 2023/03/11 11:21:27 by aait-mas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,5 @@ void	struct_initialisation(t_map *game)
 	get_pos(game);
 	player_init(game);
 	texture_init(game);
-	printf("SDRGSEHRS\n");
 	game->cast->num_rays = WINDOW_WIDTH;
 }
