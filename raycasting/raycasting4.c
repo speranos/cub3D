@@ -6,7 +6,7 @@
 /*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 03:40:06 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/12 11:35:34 by aait-mas         ###   ########.fr       */
+/*   Updated: 2023/03/12 12:25:04 by aait-mas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,13 +99,13 @@ void	update_player_mini_map(t_player *player, t_map *game)
 	move = player->walk_direction * player->move_speed;
 	if (player->ad == 1)
 	{
-		x = player->pos_x_m_map + cos(player->angle + M_PI / 2) * SCALE2/SCALE * move;
-		y = player->pos_y_m_map + sin(player->angle + M_PI / 2) * SCALE2/SCALE * move;
+		x = player->pos_x_m_map + cos(player->angle + M_PI / 2) * 0.1875 * move;
+		y = player->pos_y_m_map + sin(player->angle + M_PI / 2) * 0.1875 * move;
 	}
 	else
 	{
-		x = player->pos_x_m_map + cos(player->angle) * SCALE2/SCALE * move;
-		y = player->pos_y_m_map + sin(player->angle) * SCALE2/SCALE * move;
+		x = player->pos_x_m_map + cos(player->angle) * 0.1875 * move;
+		y = player->pos_y_m_map + sin(player->angle) * 0.1875 * move;
 	}
 	if (check_wall(game, x / SCALE2, player->pos_y_m_map / SCALE2) != 1)
 	{
