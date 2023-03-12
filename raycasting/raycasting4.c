@@ -6,7 +6,7 @@
 /*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 03:40:06 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/12 12:25:04 by aait-mas         ###   ########.fr       */
+/*   Updated: 2023/03/12 13:48:34 by aait-mas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ void	update_player_mini_map(t_player *player, t_map *game)
 
 void	struct_initialisation(t_map *game)
 {
+	image_init(game);
 	get_pos(game);
 	player_init(game);
 	texture_init(game);

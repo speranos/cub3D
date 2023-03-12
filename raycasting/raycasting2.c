@@ -6,7 +6,7 @@
 /*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 03:39:58 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/11 13:20:50 by aait-mas         ###   ########.fr       */
+/*   Updated: 2023/03/12 13:49:58 by aait-mas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@ int	ft_strlen(char *s)
 	while (s[i])
 		i++;
 	return (i);
+}
+
+void	image_init(t_map *game)
+{
+	game->imge->bits_per_pixel = 32;
+	game->imge->size_line = WINDOW_WIDTH * (32 / 8);
+	game->imge->endian = 0;
 }
 
 void	ft_image(t_map *game)

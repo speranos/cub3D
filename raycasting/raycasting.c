@@ -6,7 +6,7 @@
 /*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 03:39:53 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/12 12:19:41 by aait-mas         ###   ########.fr       */
+/*   Updated: 2023/03/12 12:36:04 by aait-mas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,8 @@ int	ft_draw(t_map *game)
 	floor_ceeling(game);
 	ft_draw_player(game);
 	draw_walls(game);
-	put_pixels(game);
 	update_player(game->play, game);
+	put_pixels(game);
 	ft_draw_player_mini_map(game);
 	update_player_mini_map(game->play, game);
 	mlx_put_image_to_window(game->mlx, game->win, game->imge->img, 0, 0);

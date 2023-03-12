@@ -6,7 +6,7 @@
 /*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 09:56:30 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/12 11:33:06 by aait-mas         ###   ########.fr       */
+/*   Updated: 2023/03/12 13:49:12 by aait-mas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,7 @@ void	get_pos(t_map *game);
 void	ft_img_init(t_img *img);
 void	ft_image(t_map *game);
 int		ft_strlen(char *s);
+void	image_init(t_map *game);
 void	put_pixels_mini_map(t_map *game);
 void	ft_draw_player_mini_map(t_map *game);
 void	draw_circle_mini_map(t_map *game);
