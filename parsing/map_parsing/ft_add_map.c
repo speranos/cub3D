@@ -6,7 +6,7 @@
 /*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 12:20:21 by aoueldma          #+#    #+#             */
-/*   Updated: 2023/03/12 12:09:11 by aait-mas         ###   ########.fr       */
+/*   Updated: 2023/03/12 13:58:54 by aait-mas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ void	ft_add_map_to_strc(t_map *cub, char **map)
 	}
 	ft_map_to_map(cub, *map, num_of_line, len);
 	i = 0;
-	while (cub->map[i])
-		printf("%s\n", cub->map[i++]);
 }
 
 int	ft_get_num_of_line(char *map)
