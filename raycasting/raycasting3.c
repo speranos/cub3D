@@ -6,7 +6,7 @@
 /*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 03:40:01 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/12 12:21:44 by aait-mas         ###   ########.fr       */
+/*   Updated: 2023/03/12 14:13:41 by aait-mas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,14 @@ void	draw_circle(t_map *game)
 
 void	player_init(t_map *game)
 {
-	if (game->player == 'N')
+	if (game->player == 'E')
 		game->play->angle = 360 * M_PI / 180;
 	else if (game->player == 'S')
-		game->play->angle = 180 * M_PI / 180;
-	else if (game->player == 'W')
-		game->play->angle = 270 * M_PI / 180;
-	else if (game->player == 'E')
 		game->play->angle = 90 * M_PI / 180;
+	else if (game->player == 'W')
+		game->play->angle = 180 * M_PI / 180;
+	else if (game->player == 'N')
+		game->play->angle = 270 * M_PI / 180;
 	game->play->ad = 0;
 	game->play->move_speed = 4;
 	game->play->turn_direction = 0;

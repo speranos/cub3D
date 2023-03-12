@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting5.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoueldma <aoueldma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 03:39:47 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/10 22:01:58 by aoueldma         ###   ########.fr       */
+/*   Updated: 2023/03/12 14:45:45 by aait-mas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,13 @@ void	texture_init(t_map *game)
 	int	i;
 
 	i = 0;
-	game->create_pixel[0].image = mlx_xpm_file_to_image(game->mlx, game->w_t, \
+	game->create_pixel[0].image = mlx_xpm_file_to_image(game->mlx, game->n_t, \
 	&game->create_pixel[0].width, &game->create_pixel[0].height);
-	game->create_pixel[1].image = mlx_xpm_file_to_image(game->mlx, game->n_t, \
+	game->create_pixel[1].image = mlx_xpm_file_to_image(game->mlx, game->e_t, \
 	&game->create_pixel[1].width, &game->create_pixel[1].height);
 	game->create_pixel[2].image = mlx_xpm_file_to_image(game->mlx, game->s_t, \
 	&game->create_pixel[2].width, &game->create_pixel[2].height);
-	game->create_pixel[3].image = mlx_xpm_file_to_image(game->mlx, game->e_t, \
+	game->create_pixel[3].image = mlx_xpm_file_to_image(game->mlx, game->w_t, \
 	&game->create_pixel[3].width, &game->create_pixel[3].height);
 	check_xpm_file(game);
 	texture_addr_init(game);

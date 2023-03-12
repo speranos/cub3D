@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tex_srcs.c                                         :+:      :+:    :+:   */
+/*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoueldma <aoueldma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 12:40:29 by aoueldma          #+#    #+#             */
-/*   Updated: 2023/03/10 22:03:29 by aoueldma         ###   ########.fr       */
+/*   Updated: 2023/03/12 14:41:30 by aait-mas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,25 +35,25 @@ int	set_offsetx(t_map *game, int i, int d)
 	31 && (int)game->cast->tab_y[i] % 32 == 0)
 	{
 		game->offsetx = (int)game->cast->tab_x[i] % 32;
-		d = 0;
+		d = 2;
 	}
 	else if ((int)game->cast->tab_y[i] % 32 > 0 && (int)game->cast->tab_y[i] \
 	% 32 < 31 && (int)game->cast->tab_x[i] % 32 == 31)
 	{
 		game->offsetx = (int)game->cast->tab_y[i] % 32;
-		d = 1;
+		d = 3;
 	}
 	else if ((int)game->cast->tab_x[i] % 32 > 0 && (int)game->cast->tab_x[i] \
 	% 32 < 31 && (int)game->cast->tab_y[i] % 32 == 31)
 	{
 		game->offsetx = (int)game->cast->tab_x[i] % 32;
-		d = 2;
+		d = 0;
 	}
 	else if ((int)game->cast->tab_y[i] % 32 > 0 && (int)game->cast->tab_y[i] \
 	% 32 < 31 && (int)game->cast->tab_x[i] % 32 == 0)
 	{
 		game->offsetx = (int)game->cast->tab_y[i] % 32;
-		d = 3;
+		d = 1;
 	}
 	return (d);
 }
