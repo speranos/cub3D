@@ -6,7 +6,7 @@
 /*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 03:40:06 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/11 13:22:23 by aait-mas         ###   ########.fr       */
+/*   Updated: 2023/03/12 11:35:34 by aait-mas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ void	ft_draw_player_mini_map(t_map *game)
 	while (angle < max_ang)
 	{
 		move = 0;
-		x = game->play->pos_x_m_map + move * cos(angle);
-		y = game->play->pos_y_m_map + move * sin(angle);
 		while (x < WINDOW_WIDTH && y < WINDOW_HEIGHT && move < 24)
 		{
 			x = game->play->pos_x_m_map + move * cos(angle);
@@ -86,7 +84,7 @@ void	draw_circle_mini_map(t_map *game)
 					game->play->pos_y_m_map + i * sin(angle), 0x00FF0000);
 				i++;
 			}
-			angle += 0.1f;
+			angle += 1;
 		}
 		radius++;
 	}
@@ -101,13 +99,13 @@ void	update_player_mini_map(t_player *player, t_map *game)
 	move = player->walk_direction * player->move_speed;
 	if (player->ad == 1)
 	{
-		x = player->pos_x_m_map + cos(player->angle + M_PI / 2) * 0.25 * move;
-		y = player->pos_y_m_map + sin(player->angle + M_PI / 2) * 0.25 * move;
+		x = player->pos_x_m_map + cos(player->angle + M_PI / 2) * SCALE2/SCALE * move;
+		y = player->pos_y_m_map + sin(player->angle + M_PI / 2) * SCALE2/SCALE * move;
 	}
 	else
 	{
-		x = player->pos_x_m_map + cos(player->angle) * 0.25 * move;
-		y = player->pos_y_m_map + sin(player->angle) * 0.25 * move;
+		x = player->pos_x_m_map + cos(player->angle) * SCALE2/SCALE * move;
+		y = player->pos_y_m_map + sin(player->angle) * SCALE2/SCALE * move;
 	}
 	if (check_wall(game, x / SCALE2, player->pos_y_m_map / SCALE2) != 1)
 	{

@@ -6,7 +6,7 @@
 /*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 03:39:53 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/11 11:10:41 by aait-mas         ###   ########.fr       */
+/*   Updated: 2023/03/12 11:59:46 by aait-mas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	update_player(t_player *player, t_map *game)
 	move = player->walk_direction * player->move_speed;
 	if (player->ad == 1)
 	{
-		x = player->position_x + cos(player->angle + M_PI / 2) * move;
-		y = player->position_y + sin(player->angle + M_PI / 2) * move;
+		x = player->position_x - sin(player->angle) * move;
+		y = player->position_y + cos(player->angle) * move;
 	}
 	else
 	{
@@ -54,32 +54,30 @@ void	ft_draw_player(t_map *game)
 	while (*angle_ray < game->play->angle + (30 * M_PI / 180))
 	{
 		move = 0;
-		x = game->play->position_x + move * cos(*angle_ray);
-		y = game->play->position_y + move * sin(*angle_ray);
 		while (x < WINDOW_WIDTH && y < WINDOW_HEIGHT)
 		{
 			x = game->play->position_x + move * cos(*angle_ray);
 			y = game->play->position_y + move * sin(*angle_ray);
 			if (check_wall(game, (int)x / SCALE, (int)y / SCALE))
 				break ;
-			move += 0.05;
+			move += 0.1;
 		}
 		get_distance(game, angle_ray, j, move);
 		j++;
 	}
 }
 
-void	get_distance(t_map *game, double *angle_ray, int j, double i)
+void	get_distance(t_map *game, double *angle_ray, int j, double move)
 {
 	float	proj_dis;
 
 	proj_dis = 0.7f * 32 / tan(0.5235987755982988733);
-	game->cast->x_wall = (game->play->position_x + i * cos(*angle_ray));
-	game->cast->y_wall = (game->play->position_y + i * sin(*angle_ray));
+	game->cast->x_wall = (game->play->position_x + move * cos(*angle_ray));
+	game->cast->y_wall = (game->play->position_y + move * sin(*angle_ray));
 	game->cast->dist = sqrt((game->cast->x_wall - game->play->position_x) * \
 						(game->cast->x_wall - game->play->position_x) + \
 						(game->cast->y_wall - game->play->position_y) * \
-						(game->cast->y_wall - game->play->position_y)) + 10;
+						(game->cast->y_wall - game->play->position_y)) + 7;
 		game->cast->tab_x[j] = game->cast->x_wall;
 		game->cast->tab_y[j] = game->cast->y_wall;
 		game->cast->dist_wall[j] = game->cast->dist * \

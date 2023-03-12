@@ -6,7 +6,7 @@
 /*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 03:40:01 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/11 00:05:41 by aait-mas         ###   ########.fr       */
+/*   Updated: 2023/03/12 11:53:20 by aait-mas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	player_init(t_map *game)
 	game->play->move_speed = 4;
 	game->play->turn_direction = 0;
 	game->play->walk_direction = 0;
-	game->play->rotation_speed = (M_PI / 180) * 4;
+	game->play->rotation_speed = 4 * (M_PI / 180);
 	game->play->position_x = game->play->position_x_map * SCALE + 16;
 	game->play->position_y = game->play->position_y_map * SCALE + 16;
 	game->play->pos_x_m_map = game->play->position_x_map * SCALE2 + 4;

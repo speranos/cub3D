@@ -6,7 +6,7 @@
 /*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 09:56:30 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/11 13:23:18 by aait-mas         ###   ########.fr       */
+/*   Updated: 2023/03/12 11:33:06 by aait-mas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,8 @@ typedef struct map
 
 }	t_map;
 
+// PARSING
+
 int		set_tex_y(t_map *game, int mid, int i);
 int		set_offsetx(t_map *game, int i, int d);
 int		get_tex_color(t_map *game, int d, int index);
@@ -194,6 +196,6 @@ int		mouse_click(int key, int x, int y, t_map *game);
 int		mouse_release(int key, int x, int y, t_map *game);
 int		mouse_move(int x, int y, t_map *game);
 void	texture_init(t_map *game);
-void	get_distance(t_map *game, double *angle_ray, int j, double i);
+void	get_distance(t_map *game, double *angle_ray, int j, double move);
 
 #endif
