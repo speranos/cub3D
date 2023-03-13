@@ -6,7 +6,7 @@
 /*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 03:39:53 by aait-mas          #+#    #+#             */
-/*   Updated: 2023/03/12 12:36:04 by aait-mas         ###   ########.fr       */
+/*   Updated: 2023/03/13 21:57:25 by aait-mas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	get_distance(t_map *game, double *angle_ray, int j, double move)
 	game->cast->dist = sqrt((game->cast->x_wall - game->play->position_x) * \
 						(game->cast->x_wall - game->play->position_x) + \
 						(game->cast->y_wall - game->play->position_y) * \
-						(game->cast->y_wall - game->play->position_y)) + 7;
+						(game->cast->y_wall - game->play->position_y)) + 1;
 		game->cast->tab_x[j] = game->cast->x_wall;
 		game->cast->tab_y[j] = game->cast->y_wall;
 		game->cast->dist_wall[j] = game->cast->dist * \
