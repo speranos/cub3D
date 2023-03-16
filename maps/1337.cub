@@ -1,7 +1,7 @@
-NO   ./textures/mauve.xpm
-SO   ./textures/brick1.xpm
-WE   ./textures/hitlerm7echer.xpm
-EA   ./textures/orange.xpm
+NO   ./textures/holly_symbole_1_.xpm
+WE   ./textures/eagle_1_.xpm
+SO   ./textures/adolf_flag_1_.xpm
+EA   ./textures/eagle_WB_1_.xpm
 
 F 192,192,192
 C 30,144,255

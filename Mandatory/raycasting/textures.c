@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aait-mas <aait-mas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aoueldma <aoueldma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 12:40:29 by aoueldma          #+#    #+#             */
-/*   Updated: 2023/03/12 14:41:30 by aait-mas         ###   ########.fr       */
+/*   Updated: 2023/03/16 00:57:43 by aoueldma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,26 @@ int	get_tex_color(t_map *game, int d, int index)
 
 int	set_offsetx(t_map *game, int i, int d)
 {
-	if ((int)game->cast->tab_x[i] % 32 > 0 && (int)game->cast->tab_x[i] % 32 < \
+	if ((int)game->cast->tab_x[i] % 32 >= 0 && (int)game->cast->tab_x[i] % 32 <= \
 	31 && (int)game->cast->tab_y[i] % 32 == 0)
 	{
 		game->offsetx = (int)game->cast->tab_x[i] % 32;
 		d = 2;
 	}
-	else if ((int)game->cast->tab_y[i] % 32 > 0 && (int)game->cast->tab_y[i] \
-	% 32 < 31 && (int)game->cast->tab_x[i] % 32 == 31)
+	else if ((int)game->cast->tab_y[i] % 32 >= 0 && (int)game->cast->tab_y[i] \
+	% 32 <= 31 && (int)game->cast->tab_x[i] % 32 == 31)
 	{
 		game->offsetx = (int)game->cast->tab_y[i] % 32;
 		d = 3;
 	}
-	else if ((int)game->cast->tab_x[i] % 32 > 0 && (int)game->cast->tab_x[i] \
-	% 32 < 31 && (int)game->cast->tab_y[i] % 32 == 31)
+	else if ((int)game->cast->tab_x[i] % 32 >= 0 && (int)game->cast->tab_x[i] \
+	% 32 <= 31 && (int)game->cast->tab_y[i] % 32 == 31)
 	{
 		game->offsetx = (int)game->cast->tab_x[i] % 32;
 		d = 0;
 	}
-	else if ((int)game->cast->tab_y[i] % 32 > 0 && (int)game->cast->tab_y[i] \
-	% 32 < 31 && (int)game->cast->tab_x[i] % 32 == 0)
+	else if ((int)game->cast->tab_y[i] % 32 >= 0 && (int)game->cast->tab_y[i] \
+	% 32 <= 31 && (int)game->cast->tab_x[i] % 32 == 0)
 	{
 		game->offsetx = (int)game->cast->tab_y[i] % 32;
 		d = 1;

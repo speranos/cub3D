@@ -24,6 +24,6 @@ clean		:
 
 fclean		:	clean
 				@rm -rf $(NAME)
-				@rm -rf $(CHECKER)
+				@rm -rf $(BONUS)
 
 re			:	fclean all

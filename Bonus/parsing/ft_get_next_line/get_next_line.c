@@ -6,7 +6,7 @@
 /*   By: aoueldma <aoueldma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 12:16:05 by aoueldma          #+#    #+#             */
-/*   Updated: 2023/03/10 12:19:41 by aoueldma         ###   ########.fr       */
+/*   Updated: 2023/03/14 12:15:41 by aoueldma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ char	*get_next_line(int fd)
 	while (!ft_searche(buf) && ret != 0)
 	{
 		ret = read(fd, buf, buffer_size);
+		if(ret < 0)
+			return(0);
 		buf[ret] = '\0';
 		left = ft_joint(left, buf);
 	}

@@ -1,13 +1,21 @@
-NO   ./textures/mauve.xpm
-SO   ./textures/brick1.xpm
-WE   ./textures/hitlerm7echer.xpm
-EA   ./textures/orange.xpm
-
 F 176,196,222
 C 0,191,255
 
+
+NO   ./textures/holly_symbole_1_.xpm
+WE   ./textures/eagle_1_.xpm
+SO   ./textures/adolf_flag_1_.xpm
+EA   ./textures/eagle_WB_1_.xpm
+
+
+
+
+
+
+
+               1
         1111111111111111111111111
-        1000000000110000000000001
+        1000000000110000000000001    
         1011000001110000000000001
         1001000000000000000000001
 111111111011000001110000000000001
